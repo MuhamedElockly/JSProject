@@ -1,4 +1,4 @@
-const isGenderValid = () => {
+export const isGenderValid = () => {
   let genderInputFeild = document.getElementsByClassName("gender")[0];
   let genderMale = document.getElementById("male");
   let genderFemale = document.getElementById("female");
@@ -14,21 +14,23 @@ const isGenderValid = () => {
     return true;
   }
 };
-const isColorValid = () => {
-  let colorInputFeild = document.getElementsByClassName("color-select")[0];
-  let colorErorr = document.getElementById("user-color-error");
-  let selectedColor = document.getElementById("color-select");
-  if (selectedColor.selectedIndex == 0) {
-    colorInputFeild.style.border = "2px solid red";
-    colorErorr.style.display = "inline-block";
-    colorInputFeild.focus();
+
+export const isRoleValid = () => {
+  let roleInputFeild = document.getElementsByClassName("role-select")[0];
+  let roleErorr = document.getElementById("user-role-error");
+  let selectedRole = document.getElementById("role-select");
+  if (selectedRole.selectedIndex == 0) {
+    roleInputFeild.style.border = "2px solid red";
+    roleErorr.style.display = "inline-block";
+    roleInputFeild.focus();
     return false;
   } else {
-    colorInputFeild.style.border = "none";
-    colorErorr.style.display = "none";
+    roleInputFeild.style.border = "none";
+    roleErorr.style.display = "none";
     return true;
   }
 };
+
 // const isAgeValid = () => {
 //   let ageInputFeild = document.getElementById("user-age");
 //   let ageErorr = document.getElementById("user-age-error");
@@ -50,7 +52,8 @@ const isColorValid = () => {
 //     return true;
 //   }
 // };
-const isNameValid = () => {
+
+export const isNameValid = () => {
   let nameInputFeild = document.getElementById("user-name");
   let nameErorr = document.getElementById("user-name-error");
   if (nameInputFeild.value == "") {
@@ -64,20 +67,151 @@ const isNameValid = () => {
     return true;
   }
 };
-const addListenerToAll = () => {
+
+export const isFirstNameValid = () => {
+  let firstNameInput = document.getElementById("first-name");
+  let firstNameError = document.getElementById("fname-error");
+
+  if (firstNameInput.value.trim() === "") {
+    firstNameInput.style.border = "2px solid red";
+    firstNameError.style.display = "inline-block";
+    firstNameError.textContent = "First name is required";
+    firstNameInput.focus();
+    return false;
+  } else if (firstNameInput.value.trim().length < 3) {
+    firstNameInput.style.border = "2px solid red";
+    firstNameError.style.display = "inline-block";
+    firstNameError.textContent = "First name must be at least 3 characters";
+    firstNameInput.focus();
+    return false;
+  } else {
+    firstNameInput.style.border = "2px solid #023047";
+    firstNameError.style.display = "none";
+    return true;
+  }
+};
+
+export const isLastNameValid = () => {
+  let lastNameInput = document.getElementById("last-name");
+  let lastNameError = document.getElementById("lname-error");
+
+  if (lastNameInput.value.trim() === "") {
+    lastNameInput.style.border = "2px solid red";
+    lastNameError.style.display = "inline-block";
+    lastNameError.textContent = "Last name is required";
+    lastNameInput.focus();
+    return false;
+  } else if (lastNameInput.value.trim().length < 3) {
+    lastNameInput.style.border = "2px solid red";
+    lastNameError.style.display = "inline-block";
+    lastNameError.textContent = "Last name must be at least 3 characters";
+    lastNameInput.focus();
+    return false;
+  } else {
+    lastNameInput.style.border = "2px solid #023047";
+    lastNameError.style.display = "none";
+    return true;
+  }
+};
+export const isPasswordValid = () => {
+  let passwordInput = document.getElementById("password");
+  let passwordError = document.getElementById("password-error");
+
+  if (passwordInput.value.trim() === "") {
+    passwordInput.style.border = "2px solid red";
+    passwordError.style.display = "inline-block";
+    passwordError.textContent = "Password feild is required";
+    passwordInput.focus();
+    return false;
+  } else if (passwordInput.value.trim().length < 3) {
+    passwordInput.style.border = "2px solid red";
+    passwordError.style.display = "inline-block";
+    passwordError.textContent = "Password must be at least 3 characters";
+    passwordInput.focus();
+    return false;
+  } else {
+    passwordInput.style.border = "2px solid #023047";
+    passwordError.style.display = "none";
+    return true;
+  }
+};
+export const isConfirmPasswordValid = () => {
+  let passwordInput = document.getElementById("password");
+
+  let confirmPasswordInput = document.getElementById("confirm-password");
+  let confirmPasswordError = document.getElementById("confirm-password-error");
+  let passwordValue = passwordInput.value;
+  let confirmPasswordValue = confirmPasswordInput.value;
+
+  if (confirmPasswordInput.value.trim() === "") {
+    confirmPasswordInput.style.border = "2px solid red";
+    confirmPasswordError.style.display = "inline-block";
+    confirmPasswordError.textContent = "Password feild is required";
+    confirmPasswordInput.focus();
+    return false;
+  } else if (confirmPasswordValue != passwordValue) {
+    confirmPasswordInput.style.border = "2px solid red";
+    confirmPasswordError.style.display = "inline-block";
+    confirmPasswordError.textContent = "Password doesn't match!";
+    confirmPasswordInput.focus();
+    return false;
+  } else {
+    confirmPasswordInput.style.border = "2px solid #023047";
+    confirmPasswordError.style.display = "none";
+    return true;
+  }
+};
+export const isEmailValid = () => {
+  let emailInput = document.getElementById("email");
+  let emailError = document.getElementById("email-error");
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  if (emailInput.value.trim() === "") {
+    emailInput.style.border = "2px solid red";
+    emailError.style.display = "inline-block";
+    emailError.textContent = "Email is required";
+    emailInput.focus();
+    return false;
+  } else if (!emailRegex.test(emailInput.value.trim())) {
+    emailInput.style.border = "2px solid red";
+    emailError.style.display = "inline-block";
+    emailError.textContent = "Please enter a valid email address";
+    emailInput.focus();
+    return false;
+  } else {
+    emailInput.style.border = "2px solid #023047";
+    emailError.style.display = "none";
+    return true;
+  }
+};
+
+export const addListenerToAll = () => {
   let genderMale = document.getElementById("male");
   let genderFemale = document.getElementById("female");
-  let selectedColor = document.getElementById("color-select");
-  let ageInputFeild = document.getElementById("user-age");
-  let nameInputFeild = document.getElementById("user-name");
+  let selectedRole = document.getElementById("role-select");
+  let firstNameInputFeild = document.getElementById("first-name");
+  let lastNameInputFeild = document.getElementById("last-name");
+  let emailInputFeild = document.getElementById("email");
+  let passwordInput = document.getElementById("password");
+  let confirmPasswordInput = document.getElementById("confirm-password");
+
   let isMaleCheckd = false;
   let isFemaleCheckd = false;
-  nameInputFeild.addEventListener("change", () => {
-    isNameValid();
+  firstNameInputFeild.addEventListener("change", () => {
+    isFirstNameValid();
   });
-  // ageInputFeild.addEventListener("change", () => {
-  //   isAgeValid();
-  // });
+  lastNameInputFeild.addEventListener("change", () => {
+    isLastNameValid();
+  });
+  emailInputFeild.addEventListener("change", () => {
+    isEmailValid();
+  });
+  passwordInput.addEventListener("change", () => {
+    isPasswordValid();
+  });
+  confirmPasswordInput.addEventListener("change", () => {
+    isConfirmPasswordValid();
+  });
   genderMale.addEventListener("click", (e) => {
     if (isMaleCheckd) {
       genderMale.checked = false;
@@ -104,33 +238,69 @@ const addListenerToAll = () => {
   genderFemale.addEventListener("change", (e) => {
     isGenderValid();
   });
-  selectedColor.addEventListener("change", () => {
-    isColorValid();
+  selectedRole.addEventListener("change", () => {
+    isRoleValid();
   });
 };
 
-const storeAtLocalStorage = () => {
-  let nameInputFeild = document.getElementById("user-name");
-  let ageInputFeild = document.getElementById("user-age");
-  let selectedColor = document.getElementById("color-select");
-  let userName = nameInputFeild.value;
-  let userAge = ageInputFeild.value;
-  let userColor = selectedColor.options[selectedColor.selectedIndex].value;
-  let genderMale = document.getElementById("male");
-  let genderFemale = document.getElementById("female");
-  let userGender = "";
-  if (genderMale.checked) {
-    userGender = "male";
-  } else {
-    userGender = "female";
+const API_URL = "http://localhost:3000";
+
+export const checkUserExists = async (email) => {
+  try {
+    const response = await fetch(`${API_URL}/users?email=${email}`);
+    const users = await response.json();
+    return users.length > 0;
+  } catch (error) {
+    console.error("Error checking user:", error);
+    return false;
   }
+};
+
+export const addNewUser = async (userData) => {
+  try {
+    const exists = await checkUserExists(userData.email);
+    if (exists) {
+      alert("User with this email already exists!");
+      return false;
+    }
+    const response = await fetch(`${API_URL}/users`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(userData),
+    });
+
+    if (!response.ok) {
+      throw new Error("Failed to add user");
+    }
+    alert("Registration successful!");
+    return true;
+  } catch (error) {
+    console.error("Error adding user:", error);
+    alert("Error during registration. Please try again.");
+    return false;
+  }
+};
+
+export const collectFormData = async () => {
+  const firstName = document.getElementById("first-name").value;
+  const lastName = document.getElementById("last-name").value;
+  const email = document.getElementById("email").value;
+  const password = document.getElementById("password").value;
+  const gender = document.querySelector('input[name="gender"]:checked').value;
+  const role = document.getElementById("role-select").value;
+
   const user = {
-    name: userName,
-    age: userAge,
-    color: userColor,
-    gender: userGender,
+    firstName,
+    lastName,
+    email,
+    password,
+    gender,
+    role,
   };
-  localStorage.setItem("user", JSON.stringify(user));
-  const savedData = localStorage.getItem("user");
-  alert("Data saved successfully!");
+  if (await addNewUser(user)) {
+    return user;
+  }
+  return null;
 };

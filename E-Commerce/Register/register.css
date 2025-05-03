@@ -72,8 +72,6 @@
   display: flex;
   align-items: center;
   justify-content: space-evenly; */
-  
-
 
   margin-bottom: 0;
   /* background-color: aquamarine; */
@@ -94,14 +92,13 @@
   font-weight: bold;
   color: #023047;
   justify-content: center;
-
 }
 #add-user-form .gender input {
   width: 20px;
   cursor: pointer;
 }
 
-.color-select {
+.role-select {
   margin-bottom: 0;
   /* background-color: aquamarine; */
   display: flex;
@@ -116,12 +113,12 @@
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-.color-select label {
+.role-select label {
   color: #333;
   font-size: 16px;
 }
 
-.color-select select {
+.role-select select {
   margin-bottom: 0;
   background-color: #023047;
   color: white;
@@ -139,11 +136,11 @@
   padding-right: 30px;
 }
 
-.color-select select:hover {
+.role-select select:hover {
   background-color: #219ebc; /* slightly darker red on hover */
 }
 
-.color-select select:focus {
+.role-select select:focus {
   outline: none;
   box-shadow: 0 0 0 2px rgba(255, 107, 107, 0.3);
 }
@@ -177,26 +174,26 @@
   height: 10px;
   display: none;
 }
-label[for="user-age"]{
+label[for="user-age"] {
   color: #023047;
   font-weight: bold;
 }
-.err-msg{
+.err-msg {
   font-size: 0.8rem;
 }
-.d-flex{
-  display:flex;
+.d-flex {
+  display: flex;
 }
-.inp-m{
-  margin:0 3px;
+.inp-m {
+  margin: 0 3px;
 }
-.select-inp{
-  display:flex;
+.select-inp {
+  display: flex;
   justify-content: center;
   margin-top: 4px;
-  width:100%;
-  padding:10px 0px;
+  width: 100%;
+  padding: 10px 0px;
 }
-.err-name{
-  margin-bottom:10px;
+.err-name {
+  margin-bottom: 10px;
 }
