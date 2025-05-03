@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="index.css" />
+
+
+    <title>Register</title>
+  </head>
+  <body>
+    <div class="add-form">
+      <div class="form-box">
+        <i id="close" class="fa-solid fa-circle-xmark"></i>
+        <h1 id="form-header">Sign in</h1>
+        <form id="add-user-form" action="">
+
+          <div class="input-div email">
+            <input type="text" id="email" placeholder="Enter your email" name="email" required/>
+            <br />
+            <span id="email-error" class="err-msg">You entered invalid email</span>
+          </div>
+          <div class="input-div email">
+            <input type="password" id="password" placeholder="Enter your password" name="password" required/>
+            <br />
+            <span id="user-name-error" class="err-msg">This field is required</span>
+          </div>
+
+
+
+          <button id="submit-btn">Log in</button>
+        </form>
+      </div>
+    </div>
+
+
+
+    <script src="utils.js"></script>
+    <script src="utils-v2.js"></script>
+    <script src="index.js"></script>
+  </body>
+</html>

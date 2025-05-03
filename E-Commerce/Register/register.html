@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="register.css" />
+
+
+    <title>Register</title>
+  </head>
+  <body>
+    <div class="add-form">
+      <div class="form-box">
+        <i id="close" class="fa-solid fa-circle-xmark"></i>
+        <h1 id="form-header">Sign up</h1>
+        <form id="add-user-form" action="">
+          <div class="d-flex">
+            <div class="input-div user-name inp-m">
+              <input type="text" id="first-name" placeholder="Enter your First name"  name="first-name"/>
+              <br />
+              <span id="fname-error" class="err-msg err-name">This field is required and must be 3 characters atleast</span>
+            </div>
+            <div class="input-div user-name inp-m">
+              <input type="text" id="last-name" placeholder="Enter your Last name" name="last-name" required/>
+              <br />
+              <span id="lname-error" class="err-msg err-name">This field is required and must be 3 characters atleast</span>
+            </div>
+          </div>
+           
+          <div class="input-div email">
+            <input type="text" id="email" placeholder="Enter your email" name="email" required/>
+            <br />
+            <span id="email-error" class="err-msg">You entered invalid email</span>
+          </div>
+          <div class="input-div email">
+            <input type="password" id="password" placeholder="Enter your password" name="password" required/>
+            <br />
+            <span id="user-name-error" class="err-msg">This field is required</span>
+          </div>
+          <div class="input-div confirm-password">
+            <input type="password" id="confirm-password" placeholder="confirm entered password" name="confirm-password" required/>
+            <br />
+            <span id="user-name-error" class="err-msg"></span>
+          </div>
+          <div class="input-div user-age">
+            <label for="user-age">Enter your birth date</label>
+            <input type="date" id="user-age"  placeholder="Enter your birthday" name="birth-date" required/>
+            <br />
+            <span id="user-age-error" class="err-msg"> sorry you must be 18 or above</span>
+          </div>
+          <div class="input-div">
+            <div class="gender">
+              <div class="gender-group">
+                <label for="male">Male</label>
+                <input type="radio" name="gender" value="male" id="male" />
+              </div>
+              <div class="gender-group">
+                <label for="female">Female</label>
+                <input type="radio" name="gender" value="female" id="female" />
+              </div>
+            </div>
+
+            <div class="input-div">
+              <div class="color-select select-inp">
+                <label for="color-select">Account type :</label>
+                <select id="color-select" name="color">
+                  <option selected disabled >-- select --</option>
+                  <option value="customer">Customer</option>
+                  <option value="seller">Seller</option>
+
+                </select>
+              </div>
+            <span id="user-gender-error" class="err-msg">This field is required</span>
+          </div>
+
+          <button id="submit-btn">Register</button>
+        </form>
+      </div>
+    </div>
+
+
+
+    <script src="utils.js"></script>
+    <script src="utils-v2.js"></script>
+    <script src="index.js"></script>
+  </body>
+</html>
