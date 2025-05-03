@@ -1,5 +1,40 @@
 {
-    "user":[
-
-    ]
+  "users": [
+    {
+      "firstName": "John",
+      "lastName": "Doe",
+      "email": "elocklymuhamed@gmail.com",
+      "password": "password123",
+      "gender": "male",
+      "role": "customer",
+      "id": "0923"
+    },
+    {
+      "firstName": "Jane",
+      "lastName": "Smith",
+      "email": "jane@example.com",
+      "password": "password456",
+      "gender": "female",
+      "role": "seller",
+      "id": "a17e"
+    },
+    {
+      "id": "75ab",
+      "firstName": "Muhamed",
+      "lastName": "Elockly",
+      "email": "elocklymuhamed1@gmail.com",
+      "password": "Mohamed",
+      "gender": "male",
+      "role": "customer"
+    },
+    {
+      "id": "01e6",
+      "firstName": "Muhamed",
+      "lastName": "Elockly",
+      "email": "elocklymuhamed4@gmail.com",
+      "password": "Mohamed",
+      "gender": "male",
+      "role": "customer"
+    }
+  ]
 }
