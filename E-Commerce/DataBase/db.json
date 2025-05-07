@@ -1,40 +1,639 @@
 {
   "users": [
     {
+      "id": "1",
       "firstName": "John",
       "lastName": "Doe",
-      "email": "elocklymuhamed@gmail.com",
+      "email": "john.doe@example.com",
       "password": "password123",
       "gender": "male",
-      "role": "customer",
-      "id": "0923"
+      "role": "admin"
     },
     {
-      "firstName": "Jane",
-      "lastName": "Smith",
-      "email": "jane@example.com",
-      "password": "password456",
+      "id": "4",
+      "firstName": "Emily",
+      "lastName": "Williams",
+      "email": "emily.w@example.com",
+      "password": "password101",
       "gender": "female",
-      "role": "seller",
-      "id": "a17e"
+      "role": "admin"
     },
     {
-      "id": "75ab",
-      "firstName": "Muhamed",
-      "lastName": "Elockly",
-      "email": "elocklymuhamed1@gmail.com",
-      "password": "Mohamed",
+      "id": "5",
+      "firstName": "David",
+      "lastName": "Brown",
+      "email": "david.b@example.com",
+      "password": "password202",
       "gender": "male",
+      "role": "seller"
+    },
+    {
+      "id": "7",
+      "firstName": "Robert",
+      "lastName": "Garcia",
+      "email": "robert.g@example.com",
+      "password": "password404",
+      "gender": "male",
+      "role": "seller"
+    },
+    {
+      "id": "8",
+      "firstName": "Jennifer",
+      "lastName": "Miller",
+      "email": "jennifer.m@example.com",
+      "password": "password505",
+      "gender": "female",
       "role": "customer"
     },
     {
-      "id": "01e6",
-      "firstName": "Muhamed",
-      "lastName": "Elockly",
-      "email": "elocklymuhamed4@gmail.com",
-      "password": "Mohamed",
+      "id": "9",
+      "firstName": "William",
+      "lastName": "Davis",
+      "email": "william.d@example.com",
+      "password": "password606",
       "gender": "male",
+      "role": "admin"
+    },
+    {
+      "id": "10",
+      "firstName": "Elizabeth",
+      "lastName": "Rodriguez",
+      "email": "elizabeth.r@example.com",
+      "password": "password707",
+      "gender": "female",
       "role": "customer"
+    },
+    {
+      "id": "11",
+      "firstName": "James",
+      "lastName": "Martinez",
+      "email": "james.m@example.com",
+      "password": "password808",
+      "gender": "male",
+      "role": "seller"
+    },
+    {
+      "id": "12",
+      "firstName": "Patricia",
+      "lastName": "Hernandez",
+      "email": "patricia.h@example.com",
+      "password": "password909",
+      "gender": "female",
+      "role": "customer"
+    },
+    {
+      "id": "13",
+      "firstName": "Thomas",
+      "lastName": "Lopez",
+      "email": "thomas.l@example.com",
+      "password": "password1010",
+      "gender": "male",
+      "role": "seller"
+    },
+    {
+      "id": "14",
+      "firstName": "Mary",
+      "lastName": "Gonzalez",
+      "email": "mary.g@example.com",
+      "password": "password1111",
+      "gender": "female",
+      "role": "customer"
+    },
+    {
+      "id": "15",
+      "firstName": "Charles",
+      "lastName": "Wilson",
+      "email": "charles.w@example.com",
+      "password": "password1212",
+      "gender": "male",
+      "role": "admin"
+    },
+    {
+      "id": "16",
+      "firstName": "Linda",
+      "lastName": "Anderson",
+      "email": "linda.a@example.com",
+      "password": "password1313",
+      "gender": "female",
+      "role": "customer"
+    },
+    {
+      "id": "17",
+      "firstName": "Joseph",
+      "lastName": "Thomas",
+      "email": "joseph.t@example.com",
+      "password": "password1414",
+      "gender": "male",
+      "role": "seller"
+    },
+    {
+      "id": "18",
+      "firstName": "Barbara",
+      "lastName": "Taylor",
+      "email": "barbara.t@example.com",
+      "password": "password1515",
+      "gender": "female",
+      "role": "customer"
+    },
+    {
+      "id": "19",
+      "firstName": "Daniel",
+      "lastName": "Moore",
+      "email": "daniel.m@example.com",
+      "password": "password1616",
+      "gender": "male",
+      "role": "seller"
+    },
+    {
+      "id": "20",
+      "firstName": "Susan",
+      "lastName": "Jackson",
+      "email": "susan.j@example.com",
+      "password": "password1717",
+      "gender": "female",
+      "role": "customer"
+    },
+    {
+      "id": "21",
+      "firstName": "Paul",
+      "lastName": "Martin",
+      "email": "paul.m@example.com",
+      "password": "password1818",
+      "gender": "male",
+      "role": "admin"
+    },
+    {
+      "id": "22",
+      "firstName": "Karen",
+      "lastName": "Lee",
+      "email": "karen.l@example.com",
+      "password": "password1919",
+      "gender": "female",
+      "role": "customer"
+    },
+    {
+      "id": "23",
+      "firstName": "Mark",
+      "lastName": "Perez",
+      "email": "mark.p@example.com",
+      "password": "password2020",
+      "gender": "male",
+      "role": "seller"
+    },
+    {
+      "id": "24",
+      "firstName": "Nancy",
+      "lastName": "Thompson",
+      "email": "nancy.t@example.com",
+      "password": "password2121",
+      "gender": "female",
+      "role": "customer"
+    },
+    {
+      "id": "25",
+      "firstName": "Donald",
+      "lastName": "White",
+      "email": "donald.w@example.com",
+      "password": "password2222",
+      "gender": "male",
+      "role": "seller"
+    },
+    {
+      "id": "26",
+      "firstName": "Lisa",
+      "lastName": "Harris",
+      "email": "lisa.h@example.com",
+      "password": "password2323",
+      "gender": "female",
+      "role": "customer"
+    },
+    {
+      "id": "27",
+      "firstName": "George",
+      "lastName": "Sanchez",
+      "email": "george.s@example.com",
+      "password": "password2424",
+      "gender": "male",
+      "role": "admin"
+    },
+    {
+      "id": "28",
+      "firstName": "Betty",
+      "lastName": "Clark",
+      "email": "betty.c@example.com",
+      "password": "password2525",
+      "gender": "female",
+      "role": "customer"
+    },
+    {
+      "id": "29",
+      "firstName": "Kenneth",
+      "lastName": "Ramirez",
+      "email": "kenneth.r@example.com",
+      "password": "password2626",
+      "gender": "male",
+      "role": "seller"
+    },
+    {
+      "id": "30",
+      "firstName": "Sandra",
+      "lastName": "Lewis",
+      "email": "sandra.l@example.com",
+      "password": "password2727",
+      "gender": "female",
+      "role": "customer"
+    },
+    {
+      "id": "31",
+      "firstName": "Steven",
+      "lastName": "Robinson",
+      "email": "steven.r@example.com",
+      "password": "password2828",
+      "gender": "male",
+      "role": "seller"
+    },
+    {
+      "id": "32",
+      "firstName": "Donna",
+      "lastName": "Walker",
+      "email": "donna.w@example.com",
+      "password": "password2929",
+      "gender": "female",
+      "role": "customer"
+    },
+    {
+      "id": "33",
+      "firstName": "Edward",
+      "lastName": "Young",
+      "email": "edward.y@example.com",
+      "password": "password3030",
+      "gender": "male",
+      "role": "admin"
+    },
+    {
+      "id": "34",
+      "firstName": "Carol",
+      "lastName": "Allen",
+      "email": "carol.a@example.com",
+      "password": "password3131",
+      "gender": "female",
+      "role": "customer"
+    },
+    {
+      "id": "35",
+      "firstName": "Brian",
+      "lastName": "King",
+      "email": "brian.k@example.com",
+      "password": "password3232",
+      "gender": "male",
+      "role": "seller"
+    },
+    {
+      "id": "36",
+      "firstName": "Ruth",
+      "lastName": "Wright",
+      "email": "ruth.w@example.com",
+      "password": "password3333",
+      "gender": "female",
+      "role": "customer"
+    },
+    {
+      "id": "37",
+      "firstName": "Ronald",
+      "lastName": "Scott",
+      "email": "ronald.s@example.com",
+      "password": "password3434",
+      "gender": "male",
+      "role": "seller"
+    },
+    {
+      "id": "38",
+      "firstName": "Sharon",
+      "lastName": "Torres",
+      "email": "sharon.t@example.com",
+      "password": "password3535",
+      "gender": "female",
+      "role": "customer"
+    },
+    {
+      "id": "39",
+      "firstName": "Anthony",
+      "lastName": "Nguyen",
+      "email": "anthony.n@example.com",
+      "password": "password3636",
+      "gender": "male",
+      "role": "admin"
+    },
+    {
+      "id": "40",
+      "firstName": "Michelle",
+      "lastName": "Hill",
+      "email": "michelle.h@example.com",
+      "password": "password3737",
+      "gender": "female",
+      "role": "customer"
+    },
+    {
+      "id": "41",
+      "firstName": "Kevin",
+      "lastName": "Flores",
+      "email": "kevin.f@example.com",
+      "password": "password3838",
+      "gender": "male",
+      "role": "seller"
+    },
+    {
+      "id": "42",
+      "firstName": "Laura",
+      "lastName": "Green",
+      "email": "laura.g@example.com",
+      "password": "password3939",
+      "gender": "female",
+      "role": "admin"
+    },
+    {
+      "id": "43",
+      "firstName": "Jason",
+      "lastName": "Adams",
+      "email": "jason.a@example.com",
+      "password": "password4040",
+      "gender": "male",
+      "role": "seller"
+    },
+    {
+      "id": "44",
+      "firstName": "Deborah",
+      "lastName": "Nelson",
+      "email": "deborah.n@example.com",
+      "password": "password4141",
+      "gender": "female",
+      "role": "customer"
+    },
+    {
+      "id": "45",
+      "firstName": "Jeffrey",
+      "lastName": "Baker",
+      "email": "jeffrey.b@example.com",
+      "password": "password4242",
+      "gender": "male",
+      "role": "admin"
+    },
+    {
+      "id": "46",
+      "firstName": "Jessica",
+      "lastName": "Hall",
+      "email": "jessica.h@example.com",
+      "password": "password4343",
+      "gender": "female",
+      "role": "customer"
+    },
+    {
+      "id": "47",
+      "firstName": "Timothy",
+      "lastName": "Rivera",
+      "email": "timothy.r@example.com",
+      "password": "password4444",
+      "gender": "male",
+      "role": "seller"
+    },
+    {
+      "id": "48",
+      "firstName": "Cynthia",
+      "lastName": "Campbell",
+      "email": "cynthia.c@example.com",
+      "password": "password4545",
+      "gender": "female",
+      "role": "customer"
+    },
+    {
+      "id": "49",
+      "firstName": "Ryan",
+      "lastName": "Mitchell",
+      "email": "ryan.m@example.com",
+      "password": "password4646",
+      "gender": "male",
+      "role": "seller"
+    },
+    {
+      "id": "50",
+      "firstName": "Angela",
+      "lastName": "Carter",
+      "email": "angela.c@example.com",
+      "password": "password4747",
+      "gender": "female",
+      "role": "customer"
+    }
+  ],
+  "products": [
+    {
+      "id": "5",
+      "name": "Samsung TV",
+      "category": "Electronics",
+      "status": "Pending",
+      "price": 899.99
+    },
+    {
+      "id": "6",
+      "name": "Nike Air Max",
+      "category": "Shoes",
+      "status": "Approved",
+      "price": 129.99
+    },
+    {
+      "id": "7",
+      "name": "Dell XPS 13",
+      "category": "Electronics",
+      "status": "Approved",
+      "price": 1499
+    },
+    {
+      "id": "8",
+      "name": "Sony WH-1000XM4",
+      "category": "Electronics",
+      "status": "Pending",
+      "price": 349.99
+    },
+    {
+      "id": "9",
+      "name": "Adidas Ultraboost",
+      "category": "Shoes",
+      "status": "Approved",
+      "price": 179.99
+    },
+    {
+      "id": "10",
+      "name": "Apple Watch Series 7",
+      "category": "Electronics",
+      "status": "Approved",
+      "price": 399.99
+    },
+    {
+      "id": "11",
+      "name": "Canon EOS R5",
+      "category": "Electronics",
+      "status": "Pending",
+      "price": 3899
+    },
+    {
+      "id": "12",
+      "name": "Instant Pot Duo",
+      "category": "Home Appliances",
+      "status": "Approved",
+      "price": 99.99
+    },
+    {
+      "id": "13",
+      "name": "Dyson V11 Vacuum",
+      "category": "Home Appliances",
+      "status": "Approved",
+      "price": 599.99
+    },
+    {
+      "id": "14",
+      "name": "KitchenAid Mixer",
+      "category": "Home Appliances",
+      "status": "Pending",
+      "price": 429.99
+    },
+    {
+      "id": "15",
+      "name": "GoPro HERO10",
+      "category": "Electronics",
+      "status": "Approved",
+      "price": 499.99
+    },
+    {
+      "id": "16",
+      "name": "Fitbit Charge 5",
+      "category": "Electronics",
+      "status": "Pending",
+      "price": 149.99
+    },
+    {
+      "id": "17",
+      "name": "North Face Jacket",
+      "category": "Clothing",
+      "status": "Approved",
+      "price": 199.99
+    },
+    {
+      "id": "18",
+      "name": "Ray-Ban Sunglasses",
+      "category": "Accessories",
+      "status": "Approved",
+      "price": 159.99
+    },
+    {
+      "id": "19",
+      "name": "Samsung Galaxy S22",
+      "category": "Electronics",
+      "status": "Pending",
+      "price": 799.99
+    },
+    {
+      "id": "20",
+      "name": "HP Spectre x360",
+      "category": "Electronics",
+      "status": "Approved",
+      "price": 1299
+    },
+    {
+      "id": "21",
+      "name": "Bose SoundLink",
+      "category": "Electronics",
+      "status": "Approved",
+      "price": 229.99
+    },
+    {
+      "id": "22",
+      "name": "Crocs Classic",
+      "category": "Shoes",
+      "status": "Pending",
+      "price": 49.99
+    },
+    {
+      "id": "23",
+      "name": "Patagonia Backpack",
+      "category": "Accessories",
+      "status": "Approved",
+      "price": 89.99
+    },
+    {
+      "id": "24",
+      "name": "Apple iPad Air",
+      "category": "Electronics",
+      "status": "Approved",
+      "price": 599.99
+    },
+    {
+      "id": "25",
+      "name": "Sony PlayStation 5",
+      "category": "Electronics",
+      "status": "Pending",
+      "price": 499.99
+    },
+    {
+      "id": "26",
+      "name": "Xbox Series X",
+      "category": "Electronics",
+      "status": "Approved",
+      "price": 499.99
+    },
+    {
+      "id": "27",
+      "name": "Nintendo Switch",
+      "category": "Electronics",
+      "status": "Approved",
+      "price": 299.99
+    },
+    {
+      "id": "28",
+      "name": "JBL Flip 5",
+      "category": "Electronics",
+      "status": "Pending",
+      "price": 89.99
+    },
+    {
+      "id": "29",
+      "name": "Columbia Hiking Boots",
+      "category": "Shoes",
+      "status": "Approved",
+      "price": 139.99
+    },
+    {
+      "id": "30",
+      "name": "Fossil Smartwatch",
+      "category": "Accessories",
+      "status": "Approved",
+      "price": 179.99
+    },
+    {
+      "id": "31",
+      "name": "Logitech MX Master 3",
+      "category": "Electronics",
+      "status": "Pending",
+      "price": 99.99
+    },
+    {
+      "id": "32",
+      "name": "Amazon Echo Dot",
+      "category": "Electronics",
+      "status": "Approved",
+      "price": 49.99
+    },
+    {
+      "id": "33",
+      "name": "Philips Hue Bulb",
+      "category": "Home Appliances",
+      "status": "Approved",
+      "price": 29.99
+    },
+    {
+      "id": "34",
+      "name": "Crocs Sandals",
+      "category": "Shoes",
+      "status": "Pending",
+      "price": 39.99
     }
   ]
 }

@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Dashboard</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="Admin.css" />
+  </head>
+  <body>
+    <div class="container">
+      <!-- Sidebar -->
+      <div class="sidebar">
+        <h2>Admin Panel</h2>
+        <ul class="nav-menu">
+          <li id="Users-Btn">
+            <a href="#users"><i class="fas fa-users"></i> Users</a>
+          </li>
+          <li id="Products-Btn">
+            <a href="#products"><i class="fas fa-box"></i> Products</a>
+          </li>
+          <li id="ProfileEdit-Btn">
+            <a href="#profile"><i class="fas fa-user"></i> Profile</a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="main-content">
+        <div class="stats-container">
+          <div class="stat-card">
+            <i class="fas fa-users icon"></i>
+            <h3>Total Users</h3>
+            <div class="number" id="Total-Users">0</div>
+          </div>
+          <div class="stat-card">
+            <i class="fas fa-box icon"></i>
+            <h3>Total Products</h3>
+            <div class="number" id="Total-Products">0</div>
+          </div>
+          <div class="stat-card">
+            <i class="fas fa-clock icon"></i>
+            <h3>Pending Approvals</h3>
+            <div class="number" id="Pending-Approval">0</div>
+          </div>
+        </div>
+
+        <!-- Users Table -->
+        <div class="table-container" id="Users-Table">
+          <div class="table-header">
+            <h2 class="table-title">User Management</h2>
+          </div>
+          <div class="search-container">
+            <div class="search-wrapper">
+              <i class="fas fa-search search-icon"></i>
+              <input
+                type="text"
+                class="search-input"
+                placeholder="Search users by name, email, or role..."
+              />
+            </div>
+          </div>
+          <table>
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Role</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td>John Doe</td>
+                <td>john@example.com</td>
+                <td>User</td>
+                <td>
+                  <button class="action-btn edit-btn">Edit</button>
+                  <button class="action-btn delete-btn">Delete</button>
+                  <button class="action-btn approve-btn">Make Admin</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Products Table -->
+        <div class="table-container" id="Products-Table">
+          <div class="table-header">
+            <h2 class="table-title">Product Management</h2>
+            <div class="table-actions"></div>
+          </div>
+          <div class="search-container">
+            <div class="search-wrapper">
+              <i class="fas fa-search search-icon"></i>
+              <input
+                type="text"
+                class="search-input"
+                placeholder="Search products by name, category, or status..."
+              />
+            </div>
+          </div>
+          <table>
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Category</th>
+                <th>Status</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td>Product Name</td>
+                <td>Category</td>
+                <td>Pending</td>
+                <td>
+                  <button class="action-btn approve-btn">Approve</button>
+                  <button class="action-btn delete-btn">Delete</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Admin Profile -->
+        <div class="profile-section" id="ProfileEdit-Table">
+          <h2>Admin Profile</h2>
+          <div class="profile-header">
+            <div class="profile-avatar">
+              <i class="fas fa-user"></i>
+            </div>
+            <div class="profile-info">
+              <h3>Admin Name</h3>
+              <p>admin@example.com</p>
+            </div>
+          </div>
+          <form class="profile-form">
+            <div class="form-group">
+              <label for="name">Full Name</label>
+              <input type="text" id="name" value="Admin Name" />
+            </div>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" id="email" value="admin@example.com" />
+            </div>
+            <div class="form-group">
+              <label for="password">New Password</label>
+              <input
+                type="password"
+                id="password"
+                placeholder="Enter new password"
+              />
+            </div>
+            <div class="form-group">
+              <label for="confirm-password">Confirm Password</label>
+              <input
+                type="password"
+                id="confirm-password"
+                placeholder="Confirm new password"
+              />
+            </div>
+            <button type="submit" class="save-btn">Save Changes</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <script src="js/admin.js"></script>
+    <script src="js/dashboard.js"></script>
+    <script src="js/userManagement.js"></script>
+    <script src="js/productManagement.js"></script>
+  </body>
+</html>
