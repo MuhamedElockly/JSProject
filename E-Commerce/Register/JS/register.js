@@ -45,7 +45,6 @@ window.addEventListener("load", () => {
     ) {
       const userData = await collectFormData();
       if (userData) {
-        console.log("User registered successfully:", userData);
         // You can redirect to another page or do something else here
       }
     }

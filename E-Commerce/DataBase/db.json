@@ -7,15 +7,6 @@
       "email": "john.doe@example.com",
       "password": "password123",
       "gender": "male",
-      "role": "customer"
-    },
-    {
-      "id": "3",
-      "firstName": "Michael",
-      "lastName": "Johnson",
-      "email": "michael.j@example.com",
-      "password": "password789",
-      "gender": "male",
       "role": "admin"
     },
     {
@@ -25,7 +16,7 @@
       "email": "emily.w@example.com",
       "password": "password101",
       "gender": "female",
-      "role": "customer"
+      "role": "admin"
     },
     {
       "id": "5",
@@ -35,15 +26,6 @@
       "password": "password202",
       "gender": "male",
       "role": "seller"
-    },
-    {
-      "id": "6",
-      "firstName": "Sarah",
-      "lastName": "Jones",
-      "email": "sarah.j@example.com",
-      "password": "password303",
-      "gender": "female",
-      "role": "customer"
     },
     {
       "id": "7",
@@ -367,7 +349,7 @@
       "email": "laura.g@example.com",
       "password": "password3939",
       "gender": "female",
-      "role": "customer"
+      "role": "admin"
     },
     {
       "id": "43",
@@ -440,6 +422,218 @@
       "password": "password4747",
       "gender": "female",
       "role": "customer"
+    }
+  ],
+  "products": [
+    {
+      "id": "5",
+      "name": "Samsung TV",
+      "category": "Electronics",
+      "status": "Pending",
+      "price": 899.99
+    },
+    {
+      "id": "6",
+      "name": "Nike Air Max",
+      "category": "Shoes",
+      "status": "Approved",
+      "price": 129.99
+    },
+    {
+      "id": "7",
+      "name": "Dell XPS 13",
+      "category": "Electronics",
+      "status": "Approved",
+      "price": 1499
+    },
+    {
+      "id": "8",
+      "name": "Sony WH-1000XM4",
+      "category": "Electronics",
+      "status": "Pending",
+      "price": 349.99
+    },
+    {
+      "id": "9",
+      "name": "Adidas Ultraboost",
+      "category": "Shoes",
+      "status": "Approved",
+      "price": 179.99
+    },
+    {
+      "id": "10",
+      "name": "Apple Watch Series 7",
+      "category": "Electronics",
+      "status": "Approved",
+      "price": 399.99
+    },
+    {
+      "id": "11",
+      "name": "Canon EOS R5",
+      "category": "Electronics",
+      "status": "Pending",
+      "price": 3899
+    },
+    {
+      "id": "12",
+      "name": "Instant Pot Duo",
+      "category": "Home Appliances",
+      "status": "Approved",
+      "price": 99.99
+    },
+    {
+      "id": "13",
+      "name": "Dyson V11 Vacuum",
+      "category": "Home Appliances",
+      "status": "Approved",
+      "price": 599.99
+    },
+    {
+      "id": "14",
+      "name": "KitchenAid Mixer",
+      "category": "Home Appliances",
+      "status": "Pending",
+      "price": 429.99
+    },
+    {
+      "id": "15",
+      "name": "GoPro HERO10",
+      "category": "Electronics",
+      "status": "Approved",
+      "price": 499.99
+    },
+    {
+      "id": "16",
+      "name": "Fitbit Charge 5",
+      "category": "Electronics",
+      "status": "Pending",
+      "price": 149.99
+    },
+    {
+      "id": "17",
+      "name": "North Face Jacket",
+      "category": "Clothing",
+      "status": "Approved",
+      "price": 199.99
+    },
+    {
+      "id": "18",
+      "name": "Ray-Ban Sunglasses",
+      "category": "Accessories",
+      "status": "Approved",
+      "price": 159.99
+    },
+    {
+      "id": "19",
+      "name": "Samsung Galaxy S22",
+      "category": "Electronics",
+      "status": "Pending",
+      "price": 799.99
+    },
+    {
+      "id": "20",
+      "name": "HP Spectre x360",
+      "category": "Electronics",
+      "status": "Approved",
+      "price": 1299
+    },
+    {
+      "id": "21",
+      "name": "Bose SoundLink",
+      "category": "Electronics",
+      "status": "Approved",
+      "price": 229.99
+    },
+    {
+      "id": "22",
+      "name": "Crocs Classic",
+      "category": "Shoes",
+      "status": "Pending",
+      "price": 49.99
+    },
+    {
+      "id": "23",
+      "name": "Patagonia Backpack",
+      "category": "Accessories",
+      "status": "Approved",
+      "price": 89.99
+    },
+    {
+      "id": "24",
+      "name": "Apple iPad Air",
+      "category": "Electronics",
+      "status": "Approved",
+      "price": 599.99
+    },
+    {
+      "id": "25",
+      "name": "Sony PlayStation 5",
+      "category": "Electronics",
+      "status": "Pending",
+      "price": 499.99
+    },
+    {
+      "id": "26",
+      "name": "Xbox Series X",
+      "category": "Electronics",
+      "status": "Approved",
+      "price": 499.99
+    },
+    {
+      "id": "27",
+      "name": "Nintendo Switch",
+      "category": "Electronics",
+      "status": "Approved",
+      "price": 299.99
+    },
+    {
+      "id": "28",
+      "name": "JBL Flip 5",
+      "category": "Electronics",
+      "status": "Pending",
+      "price": 89.99
+    },
+    {
+      "id": "29",
+      "name": "Columbia Hiking Boots",
+      "category": "Shoes",
+      "status": "Approved",
+      "price": 139.99
+    },
+    {
+      "id": "30",
+      "name": "Fossil Smartwatch",
+      "category": "Accessories",
+      "status": "Approved",
+      "price": 179.99
+    },
+    {
+      "id": "31",
+      "name": "Logitech MX Master 3",
+      "category": "Electronics",
+      "status": "Pending",
+      "price": 99.99
+    },
+    {
+      "id": "32",
+      "name": "Amazon Echo Dot",
+      "category": "Electronics",
+      "status": "Approved",
+      "price": 49.99
+    },
+    {
+      "id": "33",
+      "name": "Philips Hue Bulb",
+      "category": "Home Appliances",
+      "status": "Approved",
+      "price": 29.99
+    },
+    {
+      "id": "34",
+      "name": "Crocs Sandals",
+      "category": "Shoes",
+      "status": "Pending",
+      "price": 39.99
     }
   ]
 }

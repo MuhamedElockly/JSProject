@@ -569,7 +569,6 @@ tr:hover {
   opacity: 0.9;
 }
 
-/* Pagination Styles */
 .pagination-container {
   display: flex;
   justify-content: flex-start;
