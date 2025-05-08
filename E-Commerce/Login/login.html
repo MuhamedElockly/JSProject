@@ -3,32 +3,37 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="login.css">
     <link rel="stylesheet" href="index.css" />
 
 
-    <title>Register</title>
+    <title>Login</title>
   </head>
   <body>
-    <div class="add-form">
+    <div class="main-form">
       <div class="form-box">
         <i id="close" class="fa-solid fa-circle-xmark"></i>
         <h1 id="form-header">Sign in</h1>
         <form id="add-user-form" action="">
 
           <div class="input-div email">
-            <input type="text" id="email" placeholder="Enter your email" name="email" required/>
-            <br />
+            <input type="text" id="email" placeholder="Enter your email" name="email" required class="general-input"/>
             <span id="email-error" class="err-msg">You entered invalid email</span>
           </div>
           <div class="input-div email">
-            <input type="password" id="password" placeholder="Enter your password" name="password" required/>
-            <br />
+            <input type="password" id="password" placeholder="Enter your password" name="password" required class="general-input"/>
             <span id="user-name-error" class="err-msg">This field is required</span>
           </div>
 
 
+          <div class="submit-container">
+             <button id="submit-btn" class="general-input">Log in</button>
 
-          <button id="submit-btn">Log in</button>
+          </div>
+
+          <div class="link-container">
+            <a href="register.html" class="link">not a user ? signup now</a>
+          </div>
         </form>
       </div>
     </div>
