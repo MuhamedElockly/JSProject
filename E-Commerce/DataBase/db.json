@@ -7,7 +7,7 @@
       "email": "john.doe@example.com",
       "password": "password123",
       "gender": "male",
-      "role": "admin"
+      "role": "seller"
     },
     {
       "id": "4",
@@ -367,7 +367,7 @@
       "email": "deborah.n@example.com",
       "password": "password4141",
       "gender": "female",
-      "role": "customer"
+      "role": "user"
     },
     {
       "id": "45",
