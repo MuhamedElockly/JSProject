@@ -125,10 +125,10 @@ document.addEventListener("DOMContentLoaded", async () => {
   const logoutBtn = document.getElementById("logoutBtn");
   if (logoutBtn) {
     logoutBtn.addEventListener("click", () => {
-      // Clear session/local storage as needed
+  
       localStorage.removeItem("sellerToken");
-      // Redirect to login page
-      window.location.href = "/login.html";
+    
+      // window.location.href = "/login.html";
     });
   }
 });
@@ -137,11 +137,11 @@ function openModal(editId) {
   const modal = document.getElementById("productModal");
   modal.style.display = "flex";
   const form = document.getElementById("productForm");
-  // Clear validation errors
+
   form.querySelectorAll('.form-group').forEach(group => group.classList.remove('invalid'));
   if (editId) {
     document.getElementById("modalTitle").textContent = "Edit Product";
-    // Fill form with product data
+   
     const product = sellerProducts.find(p => p.id == editId);
     if (!product) return;
     document.getElementById("productName").value = product.name;

@@ -34,7 +34,7 @@
       "email": "robert.g@example.com",
       "password": "password404",
       "gender": "male",
-      "role": "seller"
+      "role": "admin"
     },
     {
       "id": "8",
@@ -286,7 +286,7 @@
       "email": "brian.k@example.com",
       "password": "password3232",
       "gender": "male",
-      "role": "seller"
+      "role": "admin"
     },
     {
       "id": "36",
@@ -429,29 +429,8 @@
       "id": "5",
       "name": "Samsung TV",
       "category": "Electronics",
-      "status": "Pending",
+      "status": "Approved",
       "price": 899.99
-    },
-    {
-      "id": "6",
-      "name": "Nike Air Max",
-      "category": "Shoes",
-      "status": "Approved",
-      "price": 129.99
-    },
-    {
-      "id": "7",
-      "name": "Dell XPS 13",
-      "category": "Electronics",
-      "status": "Approved",
-      "price": 1499
-    },
-    {
-      "id": "8",
-      "name": "Sony WH-1000XM4",
-      "category": "Electronics",
-      "status": "Pending",
-      "price": 349.99
     },
     {
       "id": "9",
@@ -468,13 +447,6 @@
       "price": 399.99
     },
     {
-      "id": "11",
-      "name": "Canon EOS R5",
-      "category": "Electronics",
-      "status": "Pending",
-      "price": 3899
-    },
-    {
       "id": "12",
       "name": "Instant Pot Duo",
       "category": "Home Appliances",
@@ -489,13 +461,6 @@
       "price": 599.99
     },
     {
-      "id": "14",
-      "name": "KitchenAid Mixer",
-      "category": "Home Appliances",
-      "status": "Pending",
-      "price": 429.99
-    },
-    {
       "id": "15",
       "name": "GoPro HERO10",
       "category": "Electronics",
@@ -506,7 +471,7 @@
       "id": "16",
       "name": "Fitbit Charge 5",
       "category": "Electronics",
-      "status": "Pending",
+      "status": "Approved",
       "price": 149.99
     },
     {
@@ -587,13 +552,6 @@
       "price": 299.99
     },
     {
-      "id": "28",
-      "name": "JBL Flip 5",
-      "category": "Electronics",
-      "status": "Pending",
-      "price": 89.99
-    },
-    {
       "id": "29",
       "name": "Columbia Hiking Boots",
       "category": "Shoes",
@@ -611,7 +569,7 @@
       "id": "31",
       "name": "Logitech MX Master 3",
       "category": "Electronics",
-      "status": "Pending",
+      "status": "Approved",
       "price": 99.99
     },
     {
@@ -632,7 +590,7 @@
       "id": "34",
       "name": "Crocs Sandals",
       "category": "Shoes",
-      "status": "Pending",
+      "status": "Approved",
       "price": 39.99
     }
   ]
