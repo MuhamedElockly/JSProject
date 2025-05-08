@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", () => {
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
     let valid = true;
-    // Validate name
+   
     const nameInput = document.getElementById("productName");
     const nameGroup = nameInput.closest('.form-group');
     if (nameInput.value.trim().length < 2 || nameInput.value.trim().length > 50) {
@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", () => {
     } else {
       nameGroup.classList.remove('invalid');
     }
-    // Validate category
+  
     const categoryInput = document.getElementById("productCategory");
     const categoryGroup = categoryInput.closest('.form-group');
     if (categoryInput.value.trim().length < 2 || categoryInput.value.trim().length > 30) {
@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded", () => {
     } else {
       categoryGroup.classList.remove('invalid');
     }
-    // Validate price
+    
     const priceInput = document.getElementById("productPrice");
     const priceGroup = priceInput.closest('.form-group');
     if (!priceInput.value || parseFloat(priceInput.value) <= 0) {
@@ -55,13 +55,9 @@ document.addEventListener("DOMContentLoaded", () => {
       body: JSON.stringify(product)
     });
     document.getElementById("productModal").style.display = "none";
-    // Show success message
     const msg = document.getElementById("successMessage");
     msg.style.display = "block";
     msg.style.animation = "fadeInOut 2.5s forwards";
-    setTimeout(() => {
-      msg.style.display = "none";
-      location.reload();
-    }, 2500);
+   
   });
 }); 

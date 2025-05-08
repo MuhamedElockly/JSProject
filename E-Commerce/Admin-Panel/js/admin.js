@@ -27,8 +27,6 @@ document.addEventListener("DOMContentLoaded", function () {
       statsContainer.style.display = "grid";
     }
     section.style.display = "block";
-
-    
   }
 
   usersBtn.addEventListener("click", function (e) {
@@ -46,6 +44,15 @@ document.addEventListener("DOMContentLoaded", function () {
     showSection(profileTable);
   });
 
+  const logoutBtn = document.getElementById("Logout-Btn");
+  if (logoutBtn) {
+    logoutBtn.addEventListener("click", () => {
+      // Clear session/local storage as needed
+      localStorage.removeItem("adminToken");
+      // Redirect to login page
+      window.location.href = "/Login/login.html";
+    });
+  }
 
   showSection(usersTable);
 });

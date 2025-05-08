@@ -7,7 +7,7 @@ let filteredProducts = [];
 let products = [];
 
 async function fetchProducts() {
-  console.log('products')
+  console.log("products");
   try {
     const response = await fetch(`${PRODUCT_API_BASE_URL}/products`);
     if (!response.ok) {
@@ -16,7 +16,7 @@ async function fetchProducts() {
       );
     }
     const products = await response.json();
- 
+
     return products;
   } catch (error) {
     const tbody = document.querySelector("#Products-Table tbody");
@@ -32,8 +32,30 @@ async function fetchProducts() {
     return [];
   }
 }
-
+function setupProductsSearch() {
+  const searchInput = document.querySelector("#Products-Table .search-input");
+  searchInput.addEventListener("input", async (e) => {
+    const searchTerm = e.target.value.toLowerCase();
+    const products = await fetchProducts();
+    filteredProducts = products.filter(
+      (product) =>
+        product.name.toLowerCase().includes(searchTerm) ||
+        product.category.toLowerCase().includes(searchTerm) ||
+        product.status.toLowerCase().includes(searchTerm)
+    );
+    productCurrentPage = 1;
+    const totalPages = Math.ceil(filteredProducts.length / productsPerPage);
+    displayPaginationButtons(totalPages);
+    updatePagination();
+  });
+}
 function displayPaginationButtons(totalPages) {
+  const existingPagination = document.querySelector(
+    "#Products-Table .pagination-container"
+  );
+  if (existingPagination) {
+    existingPagination.remove();
+  }
 
   const paginationContainer = document.createElement("div");
   paginationContainer.className = "pagination-container";
@@ -83,7 +105,7 @@ function displayPaginationButtons(totalPages) {
 }
 
 function updatePagination() {
-  const totalPages = Math.ceil(products.length / productsPerPage);
+  const totalPages = Math.ceil(filteredProducts.length / productsPerPage);
   const prevBtn = document.getElementById("prev-page-products");
   const nextBtn = document.getElementById("next-page-products");
   const pageBtns = document.querySelectorAll("#Products-Table .page-btn");
@@ -97,7 +119,7 @@ function updatePagination() {
 
   const startIndex = (productCurrentPage - 1) * productsPerPage;
   const endIndex = startIndex + productsPerPage;
-  const currentPageProducts = products.slice(startIndex, endIndex);
+  const currentPageProducts = filteredProducts.slice(startIndex, endIndex);
   displayProducts(currentPageProducts);
 }
 function updateTotalProductsCount(total) {
@@ -110,19 +132,92 @@ function displayProducts(products) {
   }
   tbody.innerHTML = "";
   products.forEach((product) => {
-
     const row = document.createElement("tr");
     row.innerHTML = `
       <td>${product.id}</td>
       <td>${product.name}</td>
       <td>${product.category}</td>
       <td>${product.status}</td>
-      <td>
-        <button class="action-btn approve-btn" data-id="${product.id}">Approve</button>
-        <button class="action-btn delete-btn" data-id="${product.id}">Delete</button>
+      <td class="action-cell">
+        <button class="action-btn approve-btn" data-id="${product.id}" style="${
+      product.status === "Pending" ? "" : "visibility: hidden;"
+    }">Approve</button>
+        <button class="action-btn delete-btn" data-id="${
+          product.id
+        }">Delete</button>
       </td>
     `;
     tbody.appendChild(row);
+
+    const approveBtns = row.querySelectorAll(".approve-btn");
+    approveBtns.forEach((approveBtn) => {
+      approveBtn.addEventListener("click", async (e) => {
+        const productId = e.target.dataset.id;
+        const modal = document.createElement("div");
+        modal.className = "modal modern-popup";
+        modal.innerHTML = `
+          <div class="modal-content">
+            <h2>Approve Product</h2>
+            <p>Are you sure you want to approve this product?</p>
+            <div class="modal-actions">
+              <button id="approve-confirm" class="modal-btn confirm-btn">Approve</button>
+              <button id="approve-cancel" class="modal-btn cancel-btn">Cancel</button>
+            </div>
+          </div>
+        `;
+        document.body.appendChild(modal);
+        document.getElementById("overlay").style.display = "block";
+        document
+          .getElementById("approve-confirm")
+          .addEventListener("click", async () => {
+            await approveProduct(productId);
+            document.body.removeChild(modal);
+            document.getElementById("overlay").style.display = "none";
+          });
+
+        document
+          .getElementById("approve-cancel")
+          .addEventListener("click", () => {
+            document.body.removeChild(modal);
+            document.getElementById("overlay").style.display = "none";
+          });
+      });
+    });
+    const deleteBtns = row.querySelectorAll(".delete-btn");
+    deleteBtns.forEach((approveBtn) => {
+      approveBtn.addEventListener("click", async (e) => {
+        const productId = e.target.dataset.id;
+        const modal = document.createElement("div");
+        modal.className = "modal modern-popup";
+        modal.innerHTML = `
+          <div class="modal-content">
+            <h2>Delete Product</h2>
+            <p>Are you sure you want to delete this product?</p>
+            <div class="modal-actions">
+              <button id="delete-confirm" class="modal-btn confirm-btn">Delete</button>
+              <button id="delete-cancel" class="modal-btn cancel-btn">Cancel</button>
+            </div>
+          </div>
+        `;
+        document.body.appendChild(modal);
+        document.getElementById("overlay").style.display = "block";
+        document
+          .getElementById("delete-confirm")
+          .addEventListener("click", async () => {
+            const productId = e.target.dataset.id;
+            deleteProduct(productId);
+            document.body.removeChild(modal);
+            document.getElementById("overlay").style.display = "none";
+          });
+
+        document
+          .getElementById("delete-cancel")
+          .addEventListener("click", () => {
+            document.body.removeChild(modal);
+            document.getElementById("overlay").style.display = "none";
+          });
+      });
+    });
   });
 }
 
@@ -142,8 +237,6 @@ async function deleteProduct(productId) {
     const products = await fetchProducts();
     filteredProducts = products;
     totalProducts = products.length;
-    // const totalPages = Math.ceil(totalProducts / productsPerPage);
-    // displayPaginationButtons(totalPages);
     updatePagination();
   } catch (error) {
     alert("Failed to delete product. Please try again.");
@@ -173,30 +266,22 @@ async function approveProduct(productId) {
     alert("Failed to approve product. Please try again.");
   }
 }
-
+function getPendingProductsCount(products) {
+  return products.filter((product) => product.status === "Pending").length;
+}
+function updatePendingProductsCount(total) {
+  console.log("total pending", total);
+  const pendingCount = getPendingProductsCount(products);
+  document.getElementById("Pending-Approval").textContent = pendingCount;
+}
 document.addEventListener("DOMContentLoaded", async () => {
- 
-     products = await fetchProducts();
-    console.log('dfsddddddddddddddddf')
-    totalProducts = products.length;
-    const totalPages = Math.ceil(totalProducts / productsPerPage);
-    displayPaginationButtons(totalPages);
-    updatePagination();
-    updateTotalProductsCount(totalProducts)
-
-  
-
-  document.addEventListener("click", async (e) => {
-    if (e.target.classList.contains("delete-btn")) {
-      const productId = e.target.dataset.id;
-      if (confirm("Are you sure you want to delete this product?")) {
-        await deleteProduct(productId);
-      }
-    } else if (e.target.classList.contains("approve-btn")) {
-      const productId = e.target.dataset.id;
-      if (confirm("Are you sure you want to approve this product?")) {
-        await approveProduct(productId);
-      }
-    }
-  });
+  products = await fetchProducts();
+  filteredProducts = products;
+  setupProductsSearch();
+  totalProducts = filteredProducts.length;
+  const totalPages = Math.ceil(totalProducts / productsPerPage);
+  displayPaginationButtons(totalPages);
+  updatePagination();
+  updateTotalProductsCount(totalProducts);
+  updatePendingProductsCount(totalProducts);
 });
