@@ -3,10 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="login.css">
-    <link rel="stylesheet" href="index.css" />
-
-
+    <link rel="stylesheet" href="login.css" />
     <title>Login</title>
   </head>
   <body>
@@ -15,20 +12,33 @@
         <i id="close" class="fa-solid fa-circle-xmark"></i>
         <h1 id="form-header">Sign in</h1>
         <form id="add-user-form" action="">
-
           <div class="input-div email">
-            <input type="text" id="email" placeholder="Enter your email" name="email" required class="general-input"/>
-            <span id="email-error" class="err-msg">You entered invalid email</span>
+            <input
+              type="text"
+              id="email"
+              placeholder="Enter your email"
+              name="email"
+              class="general-input"
+            />
+            <span id="email-error" class="err-msg"
+              >You entered invalid email</span
+            >
           </div>
           <div class="input-div email">
-            <input type="password" id="password" placeholder="Enter your password" name="password" required class="general-input"/>
-            <span id="user-name-error" class="err-msg">This field is required</span>
+            <input
+              type="password"
+              id="password"
+              placeholder="Enter your password"
+              name="password"
+              class="general-input"
+            />
+            <span id="user-name-error" class="err-msg"
+              >This field is required</span
+            >
           </div>
-
 
           <div class="submit-container">
-             <button id="submit-btn" class="general-input">Log in</button>
-
+            <button id="submit-btn" class="general-input">Log in</button>
           </div>
 
           <div class="link-container">
@@ -36,12 +46,12 @@
           </div>
         </form>
       </div>
+
+      <div id="successMessage" class="success-message">
+        User Login successfully!
+      </div>
     </div>
 
-
-
-    <script src="utils.js"></script>
-    <script src="utils-v2.js"></script>
-    <script src="index.js"></script>
+    <script src="JS/login.js"></script>
   </body>
 </html>

@@ -54,7 +54,37 @@ function displayUsers(users) {
       </td>
     `;
     tbody.appendChild(row);
-
+    const deleteBtn = row.querySelector(".delete-btn");
+    deleteBtn.addEventListener("click", async (e) => {
+      const modal = document.createElement("div");
+      modal.className = "modal modern-popup";
+      modal.innerHTML = `
+          <div class="modal-content">
+            <h2>Delete Confirm</h2>
+            <p>Are you sure you want to delete this user?</p>
+            <div class="modal-actions">
+              <button id="approve-confirm" class="modal-btn confirm-btn">Delete</button>
+              <button id="approve-cancel" class="modal-btn cancel-btn">Cancel</button>
+            </div>
+          </div>
+        `;
+      document.body.appendChild(modal);
+      document
+        .getElementById("approve-confirm")
+        .addEventListener("click", async () => {
+          const userId = e.target.dataset.id;
+          await deleteUser(userId);
+          modal.remove();
+          document.getElementById("overlay").style.display = "none";
+        });
+      document
+        .getElementById("approve-cancel")
+        .addEventListener("click", () => {
+          modal.remove();
+          document.getElementById("overlay").style.display = "none";
+        });
+      document.getElementById("overlay").style.display = "block";
+    });
     const roleSelects = row.querySelectorAll(".role-select");
     roleSelects.forEach((select) => {
       select.addEventListener("change", async (e) => {

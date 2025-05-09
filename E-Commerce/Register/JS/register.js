@@ -10,7 +10,7 @@ import {
     collectFormData
   } from "./utils.js";
   
-  // Initialize sample users if localStorage is empty
+  
   if (!localStorage.getItem("users")) {
     fetch("JS/users.json")
       .then(response => response.json())
@@ -44,7 +44,7 @@ import {
       ) {
         const userData = await collectFormData();
         if (userData) {
-          // You can redirect to another page or do something else here
+          
         }
       }
     });

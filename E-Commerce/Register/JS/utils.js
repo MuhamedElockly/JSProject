@@ -228,19 +228,19 @@ export const isGenderValid = () => {
   
     let isMaleCheckd = false;
     let isFemaleCheckd = false;
-    firstNameInputFeild.addEventListener("blur", () => {
+    firstNameInputFeild.addEventListener("change", () => {
       isFirstNameValid();
     });
-    lastNameInputFeild.addEventListener("blur", () => {
+    lastNameInputFeild.addEventListener("change", () => {
       isLastNameValid();
     });
-    emailInputFeild.addEventListener("blur", () => {
+    emailInputFeild.addEventListener("change", () => {
       isEmailValid();
     });
-    passwordInput.addEventListener("blur", () => {
+    passwordInput.addEventListener("change", () => {
       isPasswordValid();
     });
-    confirmPasswordInput.addEventListener("blur", () => {
+    confirmPasswordInput.addEventListener("change", () => {
       isConfirmPasswordValid();
     });
     genderMale.addEventListener("click", (e) => {

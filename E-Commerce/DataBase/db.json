@@ -4,7 +4,7 @@
       "id": "1",
       "firstName": "John",
       "lastName": "Doe",
-      "email": "john.doe@example.com",
+      "email": "password123",
       "password": "password123",
       "gender": "male",
       "role": "seller"
@@ -592,6 +592,60 @@
       "category": "Shoes",
       "status": "Approved",
       "price": 39.99
+    },
+    {
+      "id": "3e14",
+      "name": "new",
+      "category": "Electronics",
+      "price": 45,
+      "sellerId": "5",
+      "status": "Pending",
+      "imageUrl": "/images/product-images/Egg-removebg-preview.png"
+    },
+    {
+      "id": "54dd",
+      "name": "task1",
+      "category": "Shoes",
+      "price": 435,
+      "sellerId": "5",
+      "status": "Pending",
+      "imageUrl": "/images/product-images/190.png"
+    },
+    {
+      "id": "f16c",
+      "name": "Admin Name",
+      "category": "Electronics",
+      "price": 435,
+      "sellerId": "5",
+      "status": "Pending",
+      "imageUrl": "/images/product-images/orange.png"
+    },
+    {
+      "id": "999b",
+      "name": "new",
+      "category": "Electronics",
+      "price": 67,
+      "sellerId": "5",
+      "status": "Pending",
+      "imageUrl": "/images/product-images/orange.png"
+    },
+    {
+      "id": "7d29",
+      "name": "new",
+      "category": "Shoes",
+      "price": 34,
+      "sellerId": "5",
+      "status": "Pending",
+      "imageUrl": "/images/product-images/qbit.jpg"
+    },
+    {
+      "id": "f109",
+      "name": "new",
+      "category": "Electronics",
+      "price": 324,
+      "sellerId": "5",
+      "status": "Pending",
+      "imageUrl": "/images/product-images/orange.png"
     }
   ]
 }

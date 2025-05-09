@@ -1,4 +1,4 @@
-const SELLER_ID = "5"; // Demo seller id
+const SELLER_ID = "5"; 
 const API_BASE_URL = "http://localhost:3000";
 let sellerProducts = [];
 let filteredProducts = [];
@@ -9,7 +9,8 @@ let searchTimeout;
 async function fetchSellerProducts() {
   const res = await fetch(`${API_BASE_URL}/products`);
   const allProducts = await res.json();
-  return allProducts;
+  // Only return products that belong to the current seller
+  return allProducts.filter(product => String(product.sellerId) === String(SELLER_ID));
 }
 
 function updateStats(products) {
@@ -101,14 +102,21 @@ function handleSearchInput(e) {
 }
 
 document.addEventListener("DOMContentLoaded", async () => {
+  // Display seller info in sidebar
+  const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+  if (currentUser) {
+    document.getElementById("sellerName").textContent = currentUser.firstName + " " + currentUser.lastName;
+    document.getElementById("sellerEmail").textContent = currentUser.email;
+  }
+
   sellerProducts = await fetchSellerProducts();
   filteredProducts = sellerProducts;
   updateTable();
 
   document.querySelector(".search-input").addEventListener("input", handleSearchInput);
 
-  document.getElementById("addProductBtn").addEventListener("click", openModal);
-  document.getElementById("addProductBtnTop").addEventListener("click", openModal);
+  document.getElementById("addProductBtn").addEventListener("click", () => openModal());
+  document.getElementById("addProductBtnTop").addEventListener("click", () => openModal());
   document.getElementById("closeModal").addEventListener("click", closeModal);
 
   document.getElementById("Products-Table").addEventListener("click", async (e) => {
@@ -125,10 +133,14 @@ document.addEventListener("DOMContentLoaded", async () => {
   const logoutBtn = document.getElementById("logoutBtn");
   if (logoutBtn) {
     logoutBtn.addEventListener("click", () => {
-  
-      localStorage.removeItem("sellerToken");
-    
-      // window.location.href = "/login.html";
+      // Clear user data from localStorage
+      localStorage.removeItem("currentUser");
+      
+      // Show logout message
+      alert("Logged out successfully");
+      
+      // Redirect to login page
+      window.location.href = "../Login/login.html";
     });
   }
 });
