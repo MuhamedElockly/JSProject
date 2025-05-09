@@ -251,83 +251,131 @@ tr:hover {
   width: 100vw;
   height: 100vh;
   overflow: auto;
-  background: rgba(35, 41, 70, 0.25);
+  background: rgba(35, 41, 70, 0.35);
   justify-content: center;
   align-items: center;
+  animation: fadeInModal 0.3s;
+}
+@keyframes fadeInModal {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 .modal-content {
-  background: #fff;
+  background: linear-gradient(135deg, #fff 80%, #e9f7f7 100%);
   margin: 5% auto;
-  padding: 2rem 2.5rem;
-  border-radius: 16px;
+  padding: 2.5rem 2rem 2rem 2rem;
+  border-radius: 20px;
   width: 100%;
-  max-width: 440px;
+  max-width: 480px;
   position: relative;
-  box-shadow: 0 8px 32px rgba(35, 41, 70, 0.18);
+  box-shadow: 0 8px 32px rgba(35, 41, 70, 0.22);
   display: flex;
   flex-direction: column;
   align-items: stretch;
+  border: 1.5px solid #e0e0e0;
+  transition: box-shadow 0.2s;
+}
+.modal-content:hover {
+  box-shadow: 0 12px 40px rgba(35, 41, 70, 0.28);
 }
 .close {
   position: absolute;
   top: 18px;
   right: 22px;
-  font-size: 1.5rem;
+  font-size: 1.7rem;
   color: #888;
   cursor: pointer;
+  transition: color 0.2s, transform 0.2s;
 }
 .close:hover {
   color: #ef476f;
+  transform: scale(1.15);
+}
+#modalTitle {
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  letter-spacing: 0.5px;
+  color: #232946;
+  text-align: left;
 }
 .form-group {
-  margin-bottom: 1.2rem;
+  margin-bottom: 1.3rem;
+  position: relative;
 }
 .form-group label {
   display: block;
   margin-bottom: 0.5rem;
   color: #232946;
+  font-weight: 500;
+  letter-spacing: 0.2px;
 }
-.form-group input,
-.form-group select {
+.form-group input {
   width: 100%;
-  padding: 0.7rem;
-  border: 1px solid #e0e0e0;
-  border-radius: 6px;
-  font-size: 1rem;
+  max-width: 100%;
+  box-sizing: border-box;
+  padding: 0.8rem 1rem 0.8rem 2.5rem;
+  border: 1.5px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 1.08rem;
   background: #f6f8fb;
+  transition: border 0.2s, box-shadow 0.2s;
+  font-family: inherit;
 }
-#productForm .form-group input:invalid {
+.form-group input:focus {
+  outline: none;
+  border-color: #43d9ad;
+  box-shadow: 0 0 0 2px rgba(67, 217, 173, 0.15);
+}
+.form-group.invalid input {
   border-color: #ef476f;
-}
-#productForm .form-group input:focus:invalid {
   box-shadow: 0 0 0 2px rgba(239, 71, 111, 0.15);
+}
+.form-group .input-icon {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #b0b0b0;
+  font-size: 1.1rem;
+  pointer-events: none;
 }
 #productForm .error-message {
   color: #ef476f;
-  font-size: 0.95em;
-  margin-top: 0.2rem;
+  font-size: 0.97em;
+  margin-top: 0.18rem;
   margin-bottom: 0.5rem;
   display: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  font-weight: 500;
 }
 #productForm .form-group.invalid .error-message {
   display: block;
+  opacity: 1;
 }
 #productForm .save-btn {
-  background: #43d9ad;
+  background: linear-gradient(90deg, #43d9ad 60%, #379e82 100%);
   color: #fff;
   border: none;
-  border-radius: 8px;
-  padding: 0.9rem 1.5rem;
-  font-size: 1.1rem;
+  border-radius: 10px;
+  padding: 1rem 1.5rem;
+  font-size: 1.15rem;
   cursor: pointer;
-  margin-top: 1rem;
+  margin-top: 1.2rem;
   width: 100%;
-  font-weight: 600;
+  font-weight: 700;
   letter-spacing: 0.5px;
-  transition: background 0.2s;
+  transition: background 0.2s, box-shadow 0.2s;
+  box-shadow: 0 2px 8px rgba(67, 217, 173, 0.08);
 }
 #productForm .save-btn:hover {
-  background: #379e82;
+  background: linear-gradient(90deg, #379e82 60%, #43d9ad 100%);
+  box-shadow: 0 4px 16px rgba(67, 217, 173, 0.13);
 }
 .logout-btn {
   background: #ef476f;
@@ -388,9 +436,103 @@ tr:hover {
   letter-spacing: 0.5px;
   animation: fadeInOut 2.5s forwards;
 }
-/* @keyframes fadeInOut {
-  0% { opacity: 0; }
-  10% { opacity: 1; }
-  90% { opacity: 1; }
-  100% { opacity: 0; }
-}  */
+@keyframes fadeInOut {
+  0% {
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+#productName ~ .input-icon::before {
+  content: "\f02d";
+  font-family: "Font Awesome 6 Free";
+  font-weight: 900;
+}
+#productCategory ~ .input-icon::before {
+  content: "\f07c";
+  font-family: "Font Awesome 6 Free";
+  font-weight: 900;
+}
+#productPrice ~ .input-icon::before {
+  content: "\f155";
+  font-family: "Font Awesome 6 Free";
+  font-weight: 900;
+}
+@media (max-width: 600px) {
+  .modal-content {
+    padding: 1rem;
+    max-width: 98vw;
+  }
+  #modalTitle {
+    font-size: 1.2rem;
+  }
+  #productForm .save-btn {
+    font-size: 1rem;
+    padding: 0.8rem 1rem;
+  }
+}
+.seller-header {
+  margin-bottom: 2.5rem;
+  text-align: center;
+}
+.seller-name {
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: #fff;
+  margin-bottom: 0.2rem;
+  letter-spacing: 0.5px;
+}
+.seller-email {
+  font-size: 0.98rem;
+  color: #eebbc3;
+  opacity: 0.85;
+  word-break: break-all;
+}
+#productPhoto {
+  padding: 0.5rem 0.5rem;
+  background: #f6f8fb;
+  border-radius: 8px;
+  border: 1.5px solid #e0e0e0;
+  font-size: 1rem;
+  margin-top: 0.2rem;
+}
+#photoPreview {
+  display: block;
+  margin-top: 8px;
+  max-width: 120px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(35, 41, 70, 0.08);
+}
+.modern-browse-btn {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  background: linear-gradient(90deg, #43d9ad 60%, #379e82 100%);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 0.6rem 1.2rem;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(67, 217, 173, 0.08);
+  transition: background 0.2s, box-shadow 0.2s, transform 0.1s;
+}
+.modern-browse-btn:hover,
+.modern-browse-btn:focus {
+  background: linear-gradient(90deg, #379e82 60%, #43d9ad 100%);
+  box-shadow: 0 4px 16px rgba(67, 217, 173, 0.13);
+  transform: translateY(-2px) scale(1.04);
+  outline: none;
+}
+.modern-browse-btn i {
+  font-size: 1.15em;
+}

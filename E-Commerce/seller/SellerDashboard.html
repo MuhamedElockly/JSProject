@@ -1,89 +1,176 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Seller Dashboard</title>
-  <link rel="stylesheet" href="SellerDashboard.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
-</head>
-<body>
-  <div class="container">
-    <aside class="sidebar">
-      <h2>Seller Panel</h2>
-      <ul class="nav-menu">
-        <li><a href="#products"><i class="fas fa-box"></i> My Products</a></li>
-        <li><a href="#add-product" id="addProductBtn"><i class="fas fa-plus"></i> Add Product</a></li>
-        <li><button id="logoutBtn" class="logout-btn"><i class="fas fa-sign-out-alt"></i> Logout</button></li>
-      </ul>
-    </aside>
-    <main class="main-content">
-      <section class="stats-container">
-        <div class="stat-card approved">
-          <i class="fas fa-check-circle icon"></i>
-          <h3>Approved Products</h3>
-          <div class="number" id="Approved-Products">0</div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Seller Dashboard</title>
+    <link rel="stylesheet" href="SellerDashboard.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <aside class="sidebar">
+        <div class="seller-header">
+          <div id="sellerName" class="seller-name">Seller Name</div>
+          <div id="sellerEmail" class="seller-email">seller@email.com</div>
         </div>
-        <div class="stat-card pending">
-          <i class="fas fa-clock icon"></i>
-          <h3>Pending Products</h3>
-          <div class="number" id="Pending-Products">0</div>
+        <ul class="nav-menu">
+          <li>
+            <a href="#products"><i class="fas fa-box"></i> My Products</a>
+          </li>
+          <li>
+            <a href="#add-product" id="addProductBtn"
+              ><i class="fas fa-plus"></i> Add Product</a
+            >
+          </li>
+          <li>
+            <button id="logoutBtn" class="logout-btn">
+              <i class="fas fa-sign-out-alt"></i> Logout
+            </button>
+          </li>
+        </ul>
+      </aside>
+      <main class="main-content">
+        <section class="stats-container">
+          <div class="stat-card approved">
+            <i class="fas fa-check-circle icon"></i>
+            <h3>Approved Products</h3>
+            <div class="number" id="Approved-Products">0</div>
+          </div>
+          <div class="stat-card pending">
+            <i class="fas fa-clock icon"></i>
+            <h3>Pending Products</h3>
+            <div class="number" id="Pending-Products">0</div>
+          </div>
+        </section>
+        <section class="table-container" id="Products-Table">
+          <div class="table-header">
+            <h2 class="table-title">My Products</h2>
+            <button class="add-btn" id="addProductBtnTop">
+              <i class="fas fa-plus"></i> Add Product
+            </button>
+          </div>
+          <div class="search-container">
+            <div class="search-wrapper">
+              <i class="fas fa-search search-icon"></i>
+              <input
+                type="text"
+                class="search-input"
+                placeholder="Search products by name, category, or status..."
+              />
+            </div>
+          </div>
+          <table>
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Category</th>
+                <th>Status</th>
+                <th>Price</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+          <div id="pagination"></div>
+        </section>
+      </main>
+      <div class="modal" id="productModal">
+        <div class="modal-content">
+          <span class="close" id="closeModal">&times;</span>
+          <h2 id="modalTitle">Add Product</h2>
+          <form id="productForm" novalidate>
+            <div class="form-group">
+              <label for="productName">Product Name</label>
+              <input
+                type="text"
+                id="productName"
+                name="name"
+                required
+                minlength="2"
+                maxlength="50"
+              />
+              <div class="error-message">
+                Product name is required (2-50 characters).
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="productCategory">Category</label>
+              <input
+                type="text"
+                id="productCategory"
+                name="category"
+                required
+                minlength="2"
+                maxlength="30"
+              />
+              <div class="error-message">
+                Category is required (2-30 characters).
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="productPrice">Price</label>
+              <input
+                type="number"
+                id="productPrice"
+                name="price"
+                min="0.01"
+                step="0.01"
+                required
+              />
+              <div class="error-message">Price must be greater than 0.</div>
+            </div>
+            <div class="form-group" style="position: relative">
+              <label for="productPhoto">Product Image URL</label>
+              <div style="display: flex; gap: 8px">
+                <input
+                  type="text"
+                  id="productPhoto"
+                  name="photo"
+                  placeholder="/images/product-images/yourimage.jpg"
+                  style="flex: 1"
+                />
+                <button
+                  type="button"
+                  id="browseImageBtn"
+                  class="modern-browse-btn"
+                >
+                  <i class="fas fa-folder-open"></i> Browse
+                </button>
+                <input
+                  type="file"
+                  id="browseImageInput"
+                  accept="image/*"
+                  style="display: none"
+                />
+              </div>
+              <div class="error-message">Please enter the image URL.</div>
+              <img
+                id="photoPreview"
+                src=""
+                alt="Preview"
+                style="
+                  display: none;
+                  max-width: 100px;
+                  margin-top: 8px;
+                  border-radius: 8px;
+                "
+              />
+            </div>
+            <button type="submit" class="save-btn">Save Product</button>
+          </form>
+          s
         </div>
-      </section>
-      <section class="table-container" id="Products-Table">
-        <div class="table-header">
-          <h2 class="table-title">My Products</h2>
-          <button class="add-btn" id="addProductBtnTop"><i class="fas fa-plus"></i> Add Product</button>
-        </div>
-        <div class="search-container">
-          <div class="search-wrapper">
-            <i class="fas fa-search search-icon"></i>
-            <input type="text" class="search-input" placeholder="Search products by name, category, or status..." />
-          </div>
-        </div>
-        <table>
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>Name</th>
-              <th>Category</th>
-              <th>Status</th>
-              <th>Price</th>
-              <th>Actions</th>
-            </tr>
-          </thead>
-          <tbody></tbody>
-        </table>
-        <div id="pagination"></div>
-      </section>
-    </main>
-    <div class="modal" id="productModal">
-      <div class="modal-content">
-        <span class="close" id="closeModal">&times;</span>
-        <h2 id="modalTitle">Add Product</h2>
-        <form id="productForm" novalidate>
-          <div class="form-group">
-            <label for="productName">Product Name</label>
-            <input type="text" id="productName" name="name" required minlength="2" maxlength="50" />
-            <div class="error-message">Product name is required (2-50 characters).</div>
-          </div>
-          <div class="form-group">
-            <label for="productCategory">Category</label>
-            <input type="text" id="productCategory" name="category" required minlength="2" maxlength="30" />
-            <div class="error-message">Category is required (2-30 characters).</div>
-          </div>
-          <div class="form-group">
-            <label for="productPrice">Price</label>
-            <input type="number" id="productPrice" name="price" min="0.01" step="0.01" required />
-            <div class="error-message">Price must be greater than 0.</div>
-          </div>
-          <button type="submit" class="save-btn">Save Product</button>
-        </form>
+      </div>
+      <div id="successMessage" class="success-message" style="display: none">
+        Product saved successfully!
       </div>
     </div>
-    <div id="successMessage" class="success-message" style="display:none;">Product saved successfully!</div>
-  </div>
-  <script src="js/sellerDashboard.js"></script>
-  <script src="js/productForm.js"></script>
-</body>
-</html> 
+    <script src="js/sellerDashboard.js"></script>
+    <script src="js/productForm.js"></script>
+  </body>
+</html>

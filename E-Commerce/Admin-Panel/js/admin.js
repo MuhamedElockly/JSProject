@@ -2,13 +2,10 @@ document.addEventListener("DOMContentLoaded", function () {
   const usersBtn = document.getElementById("Users-Btn");
   const productsBtn = document.getElementById("Products-Btn");
   const profileBtn = document.getElementById("ProfileEdit-Btn");
-
   const usersTable = document.getElementById("Users-Table");
   const productsTable = document.getElementById("Products-Table");
   const profileTable = document.getElementById("ProfileEdit-Table");
   const statsContainer = document.querySelector(".stats-container");
-
-  // Hide all sections initially
   usersTable.style.display = "none";
   productsTable.style.display = "none";
   profileTable.style.display = "none";
@@ -47,10 +44,14 @@ document.addEventListener("DOMContentLoaded", function () {
   const logoutBtn = document.getElementById("Logout-Btn");
   if (logoutBtn) {
     logoutBtn.addEventListener("click", () => {
-      // Clear session/local storage as needed
-      localStorage.removeItem("adminToken");
+      // Clear user data from localStorage
+      localStorage.removeItem("currentUser");
+      
+      // Show logout message
+      alert("Logged out successfully");
+      
       // Redirect to login page
-      window.location.href = "/Login/login.html";
+      window.location.href = "../Login/login.html";
     });
   }
 

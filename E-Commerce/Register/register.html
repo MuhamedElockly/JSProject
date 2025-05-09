@@ -4,11 +4,12 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="register.css" />
+    <!-- <link rel="stylesheet" href="../Login/login.css" /> -->
     <script type="module" src="JS/register.js"></script>
     <title>Register</title>
   </head>
   <body>
-    <div class="add-form">
+    <div class="main-form">
       <div class="form-box">
         <i id="close" class="fa-solid fa-circle-xmark"></i>
         <h1 id="form-header">Sign up</h1>
@@ -20,24 +21,25 @@
                 id="first-name"
                 placeholder="Enter your First name"
                 name="first-name"
+                class="general-input"
               />
-              <br />
-              <span id="fname-error" class="err-msg err-name"
-                >This field is required and must be 3 characters atleast</span
-              >
+              <span id="fname-error" class="err-msg err-name">
+                This field is required and must be 3 characters atleast</span>
             </div>
-            <div class="input-div user-name inp-m">
-              <input
-                type="text"
-                id="last-name"
-                placeholder="Enter your Last name"
-                name="last-name"
-              />
-              <br />
-              <span id="lname-error" class="err-msg err-name"
-                >This field is required and must be 3 characters atleast</span
-              >
-            </div>
+
+          </div>
+
+          <div class="input-div user-name inp-m">
+            <input
+              type="text"
+              id="last-name"
+              placeholder="Enter your Last name"
+              name="last-name"
+              class="general-input"
+            />
+
+            <span id="lname-error" class="err-msg err-name">
+              This field is required and must be 3 characters atleast</span>
           </div>
 
           <div class="input-div email">
@@ -46,8 +48,8 @@
               id="email"
               placeholder="Enter your email"
               name="email"
+              class="general-input"
             />
-            <br />
             <span id="email-error" class="err-msg">This field is required</span>
           </div>
           <div class="input-div email">
@@ -56,10 +58,10 @@
               id="password"
               placeholder="Enter your password"
               name="password"
+              class="general-input"
             />
-            <br />
             <span id="password-error" class="err-msg"
-              >This field is required</span
+              >invalid password</span
             >
           </div>
           <div class="input-div confirm-password">
@@ -68,9 +70,9 @@
               id="confirm-password"
               placeholder="confirm entered password"
               name="confirm-password"
+              class="general-input"
             />
-            <br />
-            <span id="confirm-password-error" class="err-msg"></span>
+            <span id="confirm-password-error" class="err-msg">invalid password</span>
           </div>
 
           <div class="input-div">
@@ -84,27 +86,30 @@
                 <input type="radio" name="gender" value="female" id="female" />
               </div>
             </div>
-            <span id="user-gender-error" class="err-msg"
-              >This feild is required</span
-            >
+            <span id="user-gender-error" class="err-msg">This field is required</span>
           </div>
           <div class="input-div">
             <div class="role-select select-inp">
-              <label for="role-select">Role :</label>
-              <select id="role-select" name="color">
-                <option selected disabled>-- select --</option>
+              <!-- <label for="role-select">Role :</label> -->
+              <select id="role-select" name="role" class="general-input">
+
+                <option selected disabled>-- Select a Role --</option>
                 <option value="customer">Customer</option>
                 <option value="seller">Seller</option>
               </select>
             </div>
-            <span id="user-role-error" class="err-msg"
-              >This field is required</span
-            >
+            <span id="user-role-error" class="err-msg">This field is required</span>
+          </div>
+          <div class="submit-container">
+            <button id="submit-btn" class="general-input">Register</button>
           </div>
 
-          <button id="submit-btn">Register</button>
+          <!-- <button id="submit-btn">Register</button> -->
         </form>
       </div>
     </div>
+
+    <script src="JS/utils.js"></script>
+    <!-- <script src="JS/register.js"></script> -->
   </body>
 </html>

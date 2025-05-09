@@ -73,7 +73,6 @@ body {
   text-align: center;
 }
 
-/* Main Content Styles */
 .main-content {
   flex: 1;
   padding: 20px;
@@ -82,7 +81,6 @@ body {
   min-height: 100vh;
 }
 
-/* Stats Cards */
 .stats-container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -132,7 +130,6 @@ body {
   color: white;
 }
 
-/* Add a subtle pattern overlay */
 .stat-card::before {
   content: "";
   position: absolute;
@@ -150,7 +147,6 @@ body {
   opacity: 0.1;
 }
 
-/* Different gradient colors for each stat card */
 .stat-card:nth-child(1) {
   background: linear-gradient(135deg, #4a90e2, #2c3e50);
 }
@@ -163,7 +159,6 @@ body {
   background: linear-gradient(135deg, #e74c3c, #c0392b);
 }
 
-/* Tables */
 .table-container {
   background-color: white;
   padding: 20px;
@@ -212,10 +207,6 @@ tr:hover {
   font-size: 0.9em;
 }
 
-.edit-btn {
-  background-color: var(--warning-color);
-}
-
 .delete-btn {
   background-color: var(--danger-color);
 }
@@ -224,7 +215,6 @@ tr:hover {
   background-color: var(--success-color);
 }
 
-/* Profile Section */
 .profile-section {
   background-color: white;
   padding: 20px;
@@ -294,7 +284,6 @@ tr:hover {
   font-weight: 500;
 }
 
-/* Search Container Styles */
 .search-container {
   display: flex;
   align-items: center;
@@ -359,7 +348,6 @@ tr:hover {
   font-size: 1em;
 }
 
-/* Table Header Styles */
 .table-header {
   display: flex;
   justify-content: space-between;
@@ -396,7 +384,6 @@ tr:hover {
   background-color: #27ae60;
 }
 
-/* Dashboard Sections */
 .dashboard-section {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -456,7 +443,6 @@ tr:hover {
   }
 }
 
-/* Edit Form Styles */
 .edit-form {
   position: fixed;
   top: 50%;
@@ -704,7 +690,7 @@ tr:hover {
 
 .role-select {
   appearance: none;
-  background-color: #2ecc71;
+  background: linear-gradient(135deg, #4a90e2, #2c3e50);
   border: 1px solid #ccc;
   border-radius: 4px;
   padding: 5px 10px;
@@ -714,14 +700,32 @@ tr:hover {
   transition: all 0.3s ease;
   text-align: center;
 }
-
-.role-select:hover {
-  background-color: #e6e6e6;
-  border-color: #999;
+.role-select:focus{
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(230, 234, 42, 0.5);
 }
 
-.role-select:focus {
-  outline: none;
-  border-color: #007bff;
-  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+.role-select option {
+  appearance: none;
+  background: transparent;
+  border: none;
+  font-size: 14px;
+  cursor: pointer;
+  padding: 5px 10px;
+  width: 100%;
+}
+
+.role-select option:hover {
+  background: #2ecc71; /* Green color */
+  color: white;
+}
+
+.role-select option:focus {
+  background: #2ecc71; /* Green color */
+  color: white;
+}
+
+.role-select option:checked {
+  background: #2ecc71; /* Green color */
+  color: white;
 }

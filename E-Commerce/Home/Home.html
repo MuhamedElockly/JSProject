@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="Home.css">
+</head>
+<body>
+    <header>
+        <nav class="main-nav">
+            <div>
+                <a href="" id="main-page-name">E-Commerce Pj1</a>
+            </div>
+
+            <div class="search-container">
+                <input type="search" name="search" id="search">
+                <div>
+                    <span><i class="fa-solid fa-magnifying-glass" id="search-icon"></i></span>
+                </div>
+            </div>
+
+            <div>
+                <a href="" id="user-status">sign in</a>
+                <a href="" class="edge-anchors"><i class="fa-solid fa-cart-shopping"></i></a>
+            </div>
+
+        </nav>
+    </header>
+
+    <main>
+        <div class="products-container">
+            <div class="product-component">
+                <div class="product-img-container">
+                    <img src="EN_GreenOlive-1.webp" alt="product" class="product-img">
+                </div>
+                <ul class="product-text-container">
+                    <li id="product-name" class="p-list">product name</li>
+                    <li id="product-price" class="p-list">0$</li>
+                    <!-- <li id="product-quantity" class="p-list">qty</li> -->
+                    <li id="product-buy" class="p-list">
+                        <input type="number" name="qty" id="quantity-input" min="1">
+                        <button class="buy-btn">add to cart</button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </main>
+
+    <script src="JS/Home.js"></script>
+</body>
+</html>
