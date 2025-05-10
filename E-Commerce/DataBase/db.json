@@ -37,13 +37,11 @@
       "role": "admin"
     },
     {
-      "id": "8",
       "firstName": "Jennifer",
-      "lastName": "Miller",
+      "lastName": "Millers",
       "email": "jennifer.m@example.com",
-      "password": "password505",
-      "gender": "female",
-      "role": "customer"
+      "password": "123",
+      "id": "8"
     },
     {
       "id": "9",
@@ -650,92 +648,6 @@
   ],
   "orders": [
     {
-      "id": "1",
-      "customerName": "John Smith",
-      "userId": "8",
-      "status": "Pending",
-      "orderDate": "2024-03-15T10:30:00",
-      "items": [
-        {
-          "id": "3e14",
-          "name": "new",
-          "category": "Electronics",
-          "price": 45,
-          "quantity": 2,
-          "sellerId": "5"
-        },
-        {
-          "id": "54dd",
-          "name": "task1",
-          "category": "Shoes",
-          "price": 435,
-          "quantity": 1,
-          "sellerId": "5"
-        }
-      ]
-    },
-    {
-      "id": "2",
-      "customerName": "Sarah Johnson",
-      "userId": "10",
-      "status": "Pending",
-      "orderDate": "2024-03-15T11:45:00",
-      "items": [
-        {
-          "id": "f16c",
-          "name": "Admin Name",
-          "category": "Electronics",
-          "price": 435,
-          "quantity": 1,
-          "sellerId": "5"
-        }
-      ]
-    },
-    {
-      "id": "3",
-      "customerName": "Michael Brown",
-      "userId": "12",
-      "status": "Pending",
-      "orderDate": "2024-03-15T14:20:00",
-      "items": [
-        {
-          "id": "999b",
-          "name": "new",
-          "category": "Electronics",
-          "price": 67,
-          "quantity": 3,
-          "sellerId": "5"
-        },
-        {
-          "id": "7d29",
-          "name": "new",
-          "category": "Shoes",
-          "price": 34,
-          "quantity": 2,
-          "sellerId": "5"
-        }
-      ]
-    },
-    {
-      "id": "4",
-      "customerName": "Emily Davis",
-      "userId": "14",
-      "status": "Pending",
-      "orderDate": "2024-03-15T16:15:00",
-      "items": [
-        {
-          "id": "f109",
-          "name": "new",
-          "category": "Electronics",
-          "price": 324,
-          "quantity": 1,
-          "sellerId": "5"
-        }
-      ]
-    }
-  ],
-  "checkout": [
-    {
       "id": "cc32",
       "cart": [
         {
@@ -766,6 +678,183 @@
         "role": "customer",
         "gender": "female"
       }
+    },
+    {
+      "id": "45d3",
+      "cart": [
+        {
+          "id": "12",
+          "name": "Instant Pot Duo",
+          "category": "Home Appliances",
+          "status": "Approved",
+          "price": 99.99
+        },
+        {
+          "id": "10",
+          "name": "Apple Watch Series 7",
+          "category": "Electronics",
+          "status": "Approved",
+          "price": 399.99
+        }
+      ],
+      "user": {
+        "id": "32",
+        "firstName": "Donna",
+        "lastName": "Walker",
+        "email": "donna.w@example.com",
+        "role": "customer",
+        "gender": "female"
+      },
+      "status": "pending"
+    },
+    {
+      "id": "ab90",
+      "cart": [
+        {
+          "name": "Instant Pot Duo",
+          "price": "99.99",
+          "quantity": "1"
+        },
+        {
+          "name": "Adidas Ultraboost",
+          "price": "179.99",
+          "quantity": "1"
+        }
+      ],
+      "user": {
+        "id": "32",
+        "firstName": "Donna",
+        "lastName": "Walker",
+        "email": "donna.w@example.com",
+        "role": "customer",
+        "gender": "female"
+      },
+      "status": "Pending"
+    },
+    {
+      "id": "46c8",
+      "cart": [
+        {
+          "name": "Instant Pot Duo",
+          "price": "99.99",
+          "quantity": "1"
+        },
+        {
+          "name": "Apple Watch Series 7",
+          "price": "399.99",
+          "quantity": "1"
+        },
+        {
+          "name": "Adidas Ultraboost",
+          "price": "179.99",
+          "quantity": "1"
+        }
+      ],
+      "user": {
+        "id": "32",
+        "firstName": "Donna",
+        "lastName": "Walker",
+        "email": "donna.w@example.com",
+        "role": "customer",
+        "gender": "female"
+      },
+      "status": "Pending"
+    },
+    {
+      "id": "b386",
+      "cart": [
+        {
+          "name": "Instant Pot Duo",
+          "price": "99.99",
+          "quantity": "1"
+        },
+        {
+          "name": "Apple Watch Series 7",
+          "price": "399.99",
+          "quantity": "1"
+        },
+        {
+          "name": "Adidas Ultraboost",
+          "price": "179.99",
+          "quantity": "1"
+        }
+      ],
+      "user": {
+        "id": "32",
+        "firstName": "Donna",
+        "lastName": "Walker",
+        "email": "donna.w@example.com",
+        "role": "customer",
+        "gender": "female"
+      },
+      "status": "Pending"
+    },
+    {
+      "id": "6cf7",
+      "cart": [
+        {
+          "name": "Instant Pot Duo",
+          "price": "99.99",
+          "quantity": 2
+        }
+      ],
+      "user": {
+        "id": "32",
+        "firstName": "Donna",
+        "lastName": "Walker",
+        "email": "donna.w@example.com",
+        "role": "customer",
+        "gender": "female"
+      },
+      "status": "Pending"
+    },
+    {
+      "id": "be13",
+      "cart": [
+        {
+          "name": "Apple Watch Series 7",
+          "price": "399.99",
+          "quantity": "1"
+        },
+        {
+          "name": "Instant Pot Duo",
+          "price": "99.99",
+          "quantity": 2
+        }
+      ],
+      "user": {
+        "id": "32",
+        "firstName": "Donna",
+        "lastName": "Walker",
+        "email": "donna.w@example.com",
+        "role": "customer",
+        "gender": "female"
+      },
+      "status": "Pending"
+    },
+    {
+      "id": "3232",
+      "cart": [
+        {
+          "name": "Apple Watch Series 7",
+          "price": "399.99",
+          "quantity": "1"
+        },
+        {
+          "name": "Instant Pot Duo",
+          "price": "99.99",
+          "quantity": "1"
+        }
+      ],
+      "user": {
+        "id": "32",
+        "firstName": "Donna",
+        "lastName": "Walker",
+        "email": "donna.w@example.com",
+        "role": "customer",
+        "gender": "female"
+      },
+      "status": "Pending"
     }
   ],
   "review": [
@@ -774,6 +863,18 @@
       "reviewComment": "a very good watch",
       "userId": "32",
       "product": "Apple Watch Series 7"
+    },
+    {
+      "id": "1bf8",
+      "reviewComment": null,
+      "userId": "32",
+      "product": "Samsung TV"
+    },
+    {
+      "id": "e4df",
+      "reviewComment": null,
+      "userId": "32",
+      "product": "Samsung TV"
     }
   ]
 }
