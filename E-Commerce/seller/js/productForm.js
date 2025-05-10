@@ -121,9 +121,18 @@ document.addEventListener("DOMContentLoaded", () => {
       imageUrl: photoUrl,
     };
 
+    // Check if editing (data-edit-id is set)
+    const editId = form.getAttribute("data-edit-id");
+    let url = PRODUCT_API_URL + "/products";
+    let method = "POST";
+    if (editId) {
+      url += "/" + editId;
+      method = "PATCH";
+    }
+
     try {
-      const response = await fetch(PRODUCT_API_URL + "/products", {
-        method: "POST",
+      const response = await fetch(url, {
+        method,
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(product),
       });
@@ -143,6 +152,7 @@ document.addEventListener("DOMContentLoaded", () => {
         .forEach((group) => group.classList.remove("invalid"));
       photoPreview.src = "";
       photoPreview.style.display = "none";
+      form.removeAttribute("data-edit-id");
     } catch (error) {
       alert("Failed to save product. Please try again.");
     }
