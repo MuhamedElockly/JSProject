@@ -44,12 +44,15 @@ document.addEventListener("DOMContentLoaded", function () {
         );
 
         if (user) {
-          // Show success message
-          alert(`Login successful! Welcome ${user.firstName} ${user.lastName}`);
+         
+          const msg = document.getElementById("successMessage");
+          msg.style.display = "block";
+          msg.style.animation = "fadeInOut 2.5s forwards";
+
+       //   alert(`Login successful! Welcome ${user.firstName} ${user.lastName}`);
           document.getElementById("email").style.borderColor = "green";
           document.getElementById("password").style.borderColor = "green";
 
-          // Store user info in localStorage
           localStorage.setItem(
             "currentUser",
             JSON.stringify({
@@ -61,7 +64,7 @@ document.addEventListener("DOMContentLoaded", function () {
             })
           );
 
-          // Redirect based on user role
+      
           switch (user.role) {
             case "admin":
               window.location.href = "../Admin-Panel/Admin.html";
@@ -76,8 +79,12 @@ document.addEventListener("DOMContentLoaded", function () {
               alert("Unknown user role. Please contact support.");
           }
         } else {
-          // Show failure message
-          alert("Login failed - Invalid email or password");
+          
+           
+          const msg = document.getElementById("successMessage");
+          msg.style.display = "block";
+          msg.style.animation = "fadeInOut 2.5s forwards";
+
           document.getElementById("email").style.borderColor = "red";
           document.getElementById("password").style.borderColor = "red";
         }

@@ -22,6 +22,9 @@
           <li id="Products-Btn">
             <a href="#products"><i class="fas fa-box"></i> Products</a>
           </li>
+          <li id="Orders-Btn">
+            <a href="#orders"><i class="fas fa-shopping-cart"></i> Orders</a>
+          </li>
           <li id="ProfileEdit-Btn">
             <a href="#profile"><i class="fas fa-user"></i> Profile</a>
           </li>
@@ -172,10 +175,48 @@
             <button type="submit" class="save-btn">Save Changes</button>
           </form>
         </div>
+
+        <!-- Orders Table -->
+        <div class="table-container" id="Orders-Table" style="display: none">
+          <div class="table-header">
+            <h2 class="table-title">Orders Management</h2>
+          </div>
+          <div class="search-container">
+            <div class="search-wrapper">
+              <i class="fas fa-search search-icon"></i>
+              <input
+                type="text"
+                class="search-input orders-search"
+                placeholder="Search orders by customer name or status..."
+              />
+            </div>
+          </div>
+          <table>
+            <thead>
+              <tr>
+                <th>Order ID</th>
+                <th>Customer</th>
+                <th>Products</th>
+                <th>Total</th>
+                <th>Status</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+          <div id="orders-pagination"></div>
+        </div>
+
+        <div class="modal-details" id="orderDetailsModal">
+          <div class="modal-details-content order-details-modal-content">
+            <span class="close" id="closeOrderDetailsModal">&times;</span>
+            <h2>Order Details</h2>
+            <div id="orderDetailsContent"></div>
+          </div>
+        </div>
       </div>
     </div>
 
-    
     <div class="overlay" id="overlay"></div>
 
     <script src="js/admin.js"></script>
