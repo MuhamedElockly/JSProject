@@ -7,8 +7,10 @@ const getProductsFromJson = async()=>{
   const products = returnedProducts.json();
   return products
 }
-
-let cart = [];
+let returnedCart =JSON.parse(localStorage.getItem("Cart"))
+let cart = []
+if (returnedCart)
+  cart = returnedCart;
 
 const renderProducts = async (products)=>{
   // const list = document.getElementById('product-list');
@@ -24,7 +26,8 @@ const renderProducts = async (products)=>{
     //-------image element -------
     const imageProductElem = document.createElement('img');
       imageProductElem.setAttribute("class","product-image")
-      imageProductElem.setAttribute("src",product.image)
+      // imageProductElem.setAttribute("src",product.image)
+      imageProductElem.setAttribute("src","./Home/2016-09-06-what-is-a-product.webp")
       imageProductElem.setAttribute("alt",product.name)
     card.appendChild(imageProductElem);
     //----container for price, category , title , add to cart button ----
@@ -60,6 +63,8 @@ const renderProducts = async (products)=>{
         cart.push(product);
         updateCartIcon();
         alert(`${product.name} added to cart!`);
+        localStorage.setItem("Cart", JSON.stringify(cartArr))
+
       }
       })
     
@@ -98,9 +103,10 @@ const updateCartIcon = ()=> {
 }
 
 const displayCart = ()=> {
+  let cartArr= []
   const cartPopOut = document.createElement('div');
   cartPopOut.className = 'cart-pop-out';
-  const totalPrice = cart.reduce((sum, item) => sum + item.price, 0);
+  const totalPrice = cart.reduce((sum, item) => sum + Number(item.price), 0);
 
      const cartContainer = document.createElement("div");
         cartContainer.setAttribute("class", "cart-content");
@@ -109,17 +115,18 @@ const displayCart = ()=> {
     cartContainer.appendChild(headingForCart);
 
     const ulElem = document.createElement("ul");
-
+  console.log(cart)
     for(let item of cart){
+      let cartObj ;
         const liElem = document.createElement("li");
         const imgElem = document.createElement("img");
         imgElem.setAttribute("src", item.image);
         imgElem.setAttribute("alt", item.name);
         imgElem.setAttribute("class", "cart-item-image");
         liElem.appendChild(imgElem);
-
+      console.log(Number(item.price).toFixed(2))
         const span = document.createElement("span");
-        span.textContent = `${item.name} - $${item.price.toFixed(2)}`;
+        span.textContent = `${item.name} - $${Number(item.price).toFixed(2)}`;
         liElem.appendChild(span);
 
         const quantityControls = document.createElement("div");
@@ -131,6 +138,16 @@ const displayCart = ()=> {
         decreaseButton.setAttribute("data-product-id", item.name);
         decreaseButton.textContent = "-";
         quantityControls.appendChild(decreaseButton);
+        decreaseButton.addEventListener('click', () => {
+      let quantity = Number(quantitySpan.textContent);
+      if (quantity > 1) {
+          let cartItem = cartArr.find(cartObj => cartObj.name === item.name);
+          if (cartItem) {
+          cartItem.quantity = quantity - 1;
+    }
+        quantitySpan.textContent = quantity - 1;
+        updateTotalPrice(cartPopOut);}
+      })
 
         // Create quantity display
         const quantitySpan = document.createElement("span");
@@ -144,16 +161,29 @@ const displayCart = ()=> {
         increaseButton.setAttribute("data-product-id", item.name);
         increaseButton.textContent = "+";
         quantityControls.appendChild(increaseButton);
+        increaseButton.addEventListener('click', () => {
+        let quantity = Number(quantitySpan.textContent);
+          let cartItem = cartArr.find(cartObj => cartObj.name === item.name);
+          if (cartItem) {
+          cartItem.quantity = quantity + 1;
+        quantitySpan.textContent = quantity + 1;
+        updateTotalPrice(cartPopOut);
+          }
+      })
+
 
         liElem.appendChild(quantityControls);
 
         ulElem.appendChild(liElem);
+
+        cartObj = {"name" : item.name , "price" : Number(item.price).toFixed(2), "quantity": quantitySpan.textContent}
+        cartArr.push(cartObj)
     }
     cartContainer.appendChild(ulElem);
 
     const totalPriceDiv = document.createElement("div");
     totalPriceDiv.setAttribute("class", "total-price");
-    totalPriceDiv.textContent = `Total: $${totalPrice.toFixed(2)}`;
+    totalPriceDiv.textContent = `Total: $${Number(totalPrice).toFixed(2)}`;
     cartContainer.appendChild(totalPriceDiv);
 
     const closeButton = document.createElement("button");
@@ -174,85 +204,83 @@ const displayCart = ()=> {
   });
 
   checkOutButton.addEventListener("click", ()=>{
-    if (!isSignedIn()){
+    // console.log(quantitySpan)
+    if (cart.length==0 || cart == null){
+      alert("you cannot check out empty cart")
+    }
+
+    else if (!isSignedIn()){
       alert("you cannot check out your cart since you are not logged in")
       window.location.href="./Login/login.html"
     }
     else{
       const getUserData = JSON.parse(localStorage.getItem("User"));
-      fetch('http://localhost:3000/checkout', {
+      fetch('http://localhost:3000/orders', {
     method: 'POST', 
     headers: {
         'Content-Type': 'application/json' 
     },
     body: JSON.stringify({ 
-      "cart" : cart ,
+      "cart" : cartArr ,
       "user": getUserData,
-      "quantity": quantityElement.textContent
+      // "quantity": quantitySpan.textContent,
+      "status": "Pending"
     })
     })
+    localStorage.removeItem("Cart")
   }})
-    cartPopOut.querySelectorAll('.increase-quantity').forEach(button => {
-    button.addEventListener('click', () => {
-      const productId = button.getAttribute('data-product-id');
-      const quantityElement = button.parentElement.querySelector('.quantity');
-      let quantity = parseInt(quantityElement.textContent);
-      quantityElement.textContent = quantity + 1;
-      updateTotalPrice(cartPopOut);
-    });
-  });
-
-    cartPopOut.querySelectorAll('.decrease-quantity').forEach(button => {
-    button.addEventListener('click', () => {
-      const productId = button.getAttribute('data-product-id');
-      const quantityElement = button.parentElement.querySelector('.quantity');
-      let quantity = parseInt(quantityElement.textContent);
-      if (quantity > 1) {
-        quantityElement.textContent = quantity - 1;
-        updateTotalPrice(cartPopOut);
-      }
-    });
-  });
+  
 }
 
 const updateTotalPrice= (cartPopOut)=> {
   const quantities = cartPopOut.querySelectorAll('.quantity');
   const totalPrice = Array.from(quantities).reduce((sum, element, index) => {
-    return sum + (parseInt(element.textContent) * cart[index].price);
+    return sum + (parseInt(element.textContent) * Number(cart[index].price));
   }, 0);
   cartPopOut.querySelector('.total-price').textContent = `Total: $${totalPrice.toFixed(2)}`;
 }
+const userWelcoming = (isLoggedIn)=>{
+const user =  JSON.parse(localStorage.getItem("User"));
+const headerIdentity = document.querySelector("#identity")
 
-const isSignedIn = ()=>{
-  const user =  JSON.parse(localStorage.getItem("User"));
-  const headerIdentity = document.querySelector("#identity")
-  console.log(user)
-  if(!user){
-    headerIdentity.textContent = `${headerIdentity.textContent}, Anonymous`
-    profileIcon.style.display="block"
-    signOutBtn.style.display="none"
-    return false
-  }
-  else{
-    let caller = ""
+if (isLoggedIn){
+      let caller = ""
     if(user.gender == "female")
       caller= "Mrs"
     else
       caller= "Mr"
     
     headerIdentity.textContent= `${headerIdentity.textContent} , ${caller}.${user.firstName}`
-    profileIcon.style.display="none"
+    profileIcon.style.display="block"
     signOutBtn.style.display="block"
+}
+else{
+      headerIdentity.textContent = `${headerIdentity.textContent}, Anonymous`
+    profileIcon.style.display="block"
+    signOutBtn.style.display="none"
+}
+
+}
+const isSignedIn = ()=>{
+  const user =  JSON.parse(localStorage.getItem("User"));
+  if(user){
     return true
+  }
+  else{
+    return false
 
   }
 
+}
+const profileHandler = ()=>{
 
 }
+
 window.addEventListener('load', () => {
   showApprovedByDefault();
   updateCartIcon();
-  isSignedIn();
+  let userLoggedInStatus = isSignedIn(); ///-----------------------
+  userWelcoming(userLoggedInStatus)
   //shopping cart click EVENT !
   document.querySelector(".fa-shopping-cart").addEventListener("click",()=>{
       displayCart();
@@ -281,7 +309,85 @@ window.addEventListener('load', () => {
     renderProducts(matchedProducts)
   })
 
-  profileIcon.addEventListener("click",()=>{
-    window.location.href= "Login/login.html"
+  profileIcon.addEventListener("click",async ()=>{
+    const user = JSON.parse(localStorage?.getItem("User"))
+    if(!user){
+      window.location.href= "Login/login.html"
+      return false
+    }
+
+    const profileSection = document.querySelector(".profile-section")
+    const mainSection = document.querySelector("main")
+
+
+    const fullname = document.querySelector("#full-name")
+
+    const fname = document.querySelector("#fname")
+    const lname = document.querySelector("#lname")
+    const email = document.querySelector("#email")
+    const password = document.querySelector("#password")
+    const confirmPassword = document.querySelector("#confirm-password")
+    const saveButton = document.querySelector("#save-button")
+    const cancelButton = document.querySelector("#cancel-button")
+
+
+    profileSection.style.display="grid"
+    mainSection.style.display="none"
+
+    fullname.textContent=`${user.firstName} ${user.lastName}`
+    fname.value = `${user.firstName}`
+    lname.value = `${user.lastName}`
+    email.value = `${user.email}`
+
+    const userId=user.id ;
+    saveButton.addEventListener("click",()=>{
+      if(password.value == confirmPassword.value){
+              fetch(`http://localhost:3000/users/${userId}`,{
+            method:"PUT", body: JSON.stringify({
+                  "firstName" :fname .value,
+                  "lastName": lname.value,
+                  "email": email.value,
+                  "password":password.value
+
+        })
+      })
+      }
+          profileSection.style.display="none"
+          mainSection.style.display="grid"
+    })
+        cancelButton.addEventListener("click",()=>{
+          profileSection.style.display="none"
+          mainSection.style.display="grid"
+
   })
+})
 }); 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

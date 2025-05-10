@@ -64,13 +64,13 @@ window.addEventListener("load", function () {
           // Redirect based on user role
           switch (user.role) {
             case "admin":
-              window.location.href = "../Admin-Panel/Admin.html";
+              window.location.href = "../../Admin-Panel/Admin.html";
               break;
             case "seller":
-              window.location.href = "../seller/SellerDashboard.html";
+              window.location.href = "../../seller/SellerDashboard.html";
               break;
             case "customer":
-              window.location.href = "../index.html";
+              window.location.href = "../../index.html";
               break;
             default:
               alert("Unknown user role. Please contact support.");
