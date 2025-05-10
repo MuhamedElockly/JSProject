@@ -21,8 +21,9 @@ async function fetchSellerProducts() {
 async function fetchSellerOrders() {
   const res = await fetch(`${API_BASE_URL}/orders`);
   const allOrders = await res.json();
-  // Only return orders that contain products from the current seller
+  // Only return pending orders that contain products from the current seller
   return allOrders.filter(order => 
+    order.status === 'Pending' && 
     order.items.some(item => String(item.sellerId) === String(SELLER_ID))
   );
 }
@@ -31,7 +32,7 @@ function updateStats(products) {
   const approved = products.filter(p => p.status === "Approved").length;
   const pendingProducts = products.filter(p => p.status === "Pending").length;
   // Count pending orders for this seller
-  const pendingOrders = sellerOrders.filter(order => order.status === "Pending").length;
+  const pendingOrders = sellerOrders.length; // sellerOrders contains only pending orders
   document.getElementById("Approved-Products").textContent = approved;
   document.getElementById("Pending-Products").textContent = pendingProducts;
   const pendingOrdersCard = document.getElementById("Pending-Orders");
@@ -63,6 +64,12 @@ function displayProducts(products) {
 function displayOrders(orders) {
   const tbody = document.querySelector("#Orders-Table tbody");
   tbody.innerHTML = "";
+  
+  if (orders.length === 0) {
+    tbody.innerHTML = '<tr><td colspan="6" style="text-align: center;">No pending orders found</td></tr>';
+    return;
+  }
+
   orders.forEach(order => {
     const sellerItems = order.items.filter(item => String(item.sellerId) === String(SELLER_ID));
     const total = sellerItems.reduce((sum, item) => sum + (item.price * item.quantity), 0);
@@ -73,12 +80,10 @@ function displayOrders(orders) {
       <td>${order.customerName}</td>
       <td>${sellerItems.map(item => `${item.name} (${item.quantity})`).join(', ')}</td>
       <td>$${total.toFixed(2)}</td>
-      <td>${order.status}</td>
+      <td>Pending</td>
       <td>
-        ${order.status === 'Pending' ? `
-          <button class="action-btn approve-btn" data-id="${order.id}">Approve</button>
-          <button class="action-btn delete-btn" data-id="${order.id}">Delete</button>
-        ` : ''}
+        <button class="action-btn approve-btn" data-id="${order.id}">Approve</button>
+        <button class="action-btn delete-btn" data-id="${order.id}">Delete</button>
       </td>
     `;
     tbody.appendChild(row);
@@ -226,6 +231,7 @@ async function approveOrder(orderId) {
     sellerOrders = await fetchSellerOrders();
     filteredOrders = sellerOrders;
     updateOrdersTable();
+    updateStats(sellerProducts);
   } catch (error) {
     alert('Failed to approve order. Please try again.');
   }
@@ -248,6 +254,7 @@ async function deleteOrder(orderId) {
     sellerOrders = sellerOrders.filter(order => order.id !== orderId);
     filteredOrders = filteredOrders.filter(order => order.id !== orderId);
     updateOrdersTable();
+    updateStats(sellerProducts);
   } catch (error) {
     alert('Failed to delete order. Please try again.');
   }
@@ -256,16 +263,21 @@ async function deleteOrder(orderId) {
 function openOrderDetailsModal(order) {
   const modal = document.getElementById("orderDetailsModal");
   const content = document.getElementById("orderDetailsContent");
+  
+  // Filter items to only show the seller's items
+  const sellerItems = order.items.filter(item => String(item.sellerId) === String(SELLER_ID));
+  const total = sellerItems.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+  
   content.innerHTML = `
     <ul class="order-details-list">
       <li><strong>Order ID:</strong> ${order.id}</li>
       <li><strong>Customer:</strong> ${order.customerName}</li>
-      <li><strong>Status:</strong> ${order.status}</li>
+      <li><strong>Status:</strong> ${order.status === 'bending' ? 'Pending' : order.status}</li>
       <li><strong>Order Date:</strong> ${order.orderDate ? new Date(order.orderDate).toLocaleString() : ''}</li>
-      <li><strong>Total:</strong> $${order.totalAmount ? order.totalAmount.toFixed(2) : ''}</li>
+      <li><strong>Total:</strong> $${total.toFixed(2)}</li>
     </ul>
     <div class="order-details-products">
-      <h3>Products</h3>
+      <h3>Your Products in this Order</h3>
       <table>
         <thead>
           <tr>
@@ -276,7 +288,7 @@ function openOrderDetailsModal(order) {
           </tr>
         </thead>
         <tbody>
-          ${order.items.map(item => `
+          ${sellerItems.map(item => `
             <tr>
               <td>${item.name}</td>
               <td>${item.quantity}</td>
@@ -313,10 +325,12 @@ document.addEventListener("DOMContentLoaded", async () => {
     sellerOrders = await fetchSellerOrders();
     filteredOrders = sellerOrders;
     console.log('Fetched orders:', sellerOrders); 
+    updateStats(sellerProducts);
   } catch (error) {
     console.error('Error fetching orders:', error);
     sellerOrders = [];
     filteredOrders = [];
+    updateStats(sellerProducts);
   }
 
   
@@ -361,7 +375,48 @@ document.addEventListener("DOMContentLoaded", async () => {
   document.getElementById("Products-Table").addEventListener("click", async (e) => {
     if (e.target.classList.contains("delete-btn")) {
       const id = e.target.dataset.id;
-      await deleteProduct(id);
+      // Create confirm modal
+      const modal = document.createElement("div");
+      modal.className = "modal modern-popup";
+      modal.style.display = "flex";
+      modal.innerHTML = `
+        <div class="modal-content">
+          <h2>Delete Product</h2>
+          <p>Are you sure you want to delete this product?</p>
+          <div class="modal-actions">
+            <button id="delete-confirm" class="modal-btn confirm-btn">Delete</button>
+            <button id="delete-cancel" class="modal-btn cancel-btn">Cancel</button>
+          </div>
+        </div>
+      `;
+      document.body.appendChild(modal);
+      // Show overlay
+      const overlay = document.getElementById("successOverlay");
+      if (overlay) overlay.style.display = "block";
+      // Confirm delete
+      document.getElementById("delete-confirm").addEventListener("click", async () => {
+        await deleteProduct(id);
+        document.body.removeChild(modal);
+        if (overlay) overlay.style.display = "none";
+        // Show success message
+        const msg = document.getElementById("successMessage");
+        if (msg && overlay) {
+          msg.textContent = "Product deleted successfully!";
+          msg.style.display = "block";
+          overlay.style.display = "block";
+          msg.style.animation = "fadeInOut 2.5s forwards";
+          setTimeout(() => {
+            msg.style.display = "none";
+            overlay.style.display = "none";
+          }, 2500);
+        }
+      });
+      // Cancel delete
+      document.getElementById("delete-cancel").addEventListener("click", () => {
+        document.body.removeChild(modal);
+        if (overlay) overlay.style.display = "none";
+      });
+      return;
     } else if (e.target.classList.contains("edit-btn")) {
       const id = e.target.dataset.id;
       openModal(id);
@@ -407,10 +462,26 @@ function openModal(editId) {
     document.getElementById("productCategory").value = product.category;
     document.getElementById("productPrice").value = product.price !== undefined ? product.price : '';
     form.setAttribute("data-edit-id", editId);
+    // Fill image URL if exists
+    const photoInput = document.getElementById("productPhoto");
+    const photoPreview = document.getElementById("photoPreview");
+    if (product.imageUrl) {
+      photoInput.value = product.imageUrl;
+      photoPreview.src = product.imageUrl;
+      photoPreview.style.display = "block";
+    } else {
+      photoInput.value = '';
+      photoPreview.src = '';
+      photoPreview.style.display = "none";
+    }
   } else {
     document.getElementById("modalTitle").textContent = "Add Product";
     form.reset();
     form.removeAttribute("data-edit-id");
+    // Reset image preview
+    const photoPreview = document.getElementById("photoPreview");
+    photoPreview.src = '';
+    photoPreview.style.display = "none";
   }
 }
 

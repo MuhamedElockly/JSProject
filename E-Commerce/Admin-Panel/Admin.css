@@ -29,28 +29,54 @@ body {
 }
 
 .sidebar {
-  background-color: var(--dark-bg);
+  background-color: #232946;
   color: white;
-  padding: 20px;
-  width: 250px;
+  padding: 24px 18px 18px 18px;
+  width: 220px;
   position: fixed;
   height: 100vh;
   overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .sidebar h2 {
-  margin-bottom: 30px;
-  padding-bottom: 10px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  margin-bottom: 8px;
+  padding-bottom: 0;
+  border-bottom: none;
   font-size: 1.3em;
+  font-weight: bold;
+  text-align: center;
+}
+
+.admin-name {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #fff;
+  margin-bottom: 0.2rem;
+  letter-spacing: 0.5px;
+  text-align: center;
+}
+
+.admin-email {
+  font-size: 0.98rem;
+  color: #eebbc3;
+  opacity: 0.85;
+  word-break: break-all;
+  margin-bottom: 1.5rem;
+  text-align: center;
 }
 
 .nav-menu {
   list-style: none;
+  width: 100%;
+  padding: 0;
+  margin-bottom: 2rem;
 }
 
 .nav-menu li {
-  margin-bottom: 10px;
+  margin-bottom: 14px;
 }
 
 .nav-menu a {
@@ -58,19 +84,45 @@ body {
   text-decoration: none;
   display: flex;
   align-items: center;
-  padding: 10px;
-  border-radius: 5px;
+  padding: 10px 12px;
+  border-radius: 6px;
   transition: background-color 0.3s;
+  font-size: 1.08em;
+  gap: 10px;
 }
 
 .nav-menu a:hover {
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: #353a5b;
 }
 
 .nav-menu i {
-  margin-right: 10px;
+  margin-right: 8px;
   width: 20px;
   text-align: center;
+  font-size: 1.15em;
+}
+
+.logout-btn, #Logout-Btn a {
+  background: #ef476f;
+  color: #fff !important;
+  border: none;
+  border-radius: 8px;
+  padding: 0.7rem 1.5rem;
+  font-size: 1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  margin-top: 1.5rem;
+  transition: background 0.2s;
+  justify-content: center;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.logout-btn:hover, #Logout-Btn a:hover {
+  background: #c82333;
 }
 
 .main-content {
@@ -635,7 +687,117 @@ tr:hover {
 }
 
 .modal-content {
-  text-align: center;
+  background: linear-gradient(135deg, #fff 80%, #e9f7f7 100%);
+  margin: 5% auto;
+  padding: 2.5rem 2rem 2rem 2rem;
+  border-radius: 20px;
+  width: 100%;
+  max-width: 480px;
+  position: relative;
+  box-shadow: 0 8px 32px rgba(35, 41, 70, 0.22);
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  border: 1.5px solid #e0e0e0;
+  transition: box-shadow 0.2s;
+}
+.modal-content:hover {
+  box-shadow: 0 12px 40px rgba(35, 41, 70, 0.28);
+}
+.close {
+  position: absolute;
+  top: 18px;
+  right: 22px;
+  font-size: 1.7rem;
+  color: #888;
+  cursor: pointer;
+  transition: color 0.2s, transform 0.2s;
+}
+.close:hover {
+  color: #ef476f;
+  transform: scale(1.15);
+}
+#modalTitle {
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  letter-spacing: 0.5px;
+  color: #232946;
+  text-align: left;
+}
+.form-group {
+  margin-bottom: 1.3rem;
+  position: relative;
+}
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: #232946;
+  font-weight: 500;
+  letter-spacing: 0.2px;
+}
+.form-group input {
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  padding: 0.8rem 1rem 0.8rem 2.5rem;
+  border: 1.5px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 1.08rem;
+  background: #f6f8fb;
+  transition: border 0.2s, box-shadow 0.2s;
+  font-family: inherit;
+}
+.form-group input:focus {
+  outline: none;
+  border-color: #43d9ad;
+  box-shadow: 0 0 0 2px rgba(67, 217, 173, 0.15);
+}
+.form-group.invalid input {
+  border-color: #ef476f;
+  box-shadow: 0 0 0 2px rgba(239, 71, 111, 0.15);
+}
+.form-group .input-icon {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #b0b0b0;
+  font-size: 1.1rem;
+  pointer-events: none;
+}
+#productForm .error-message {
+  color: #ef476f;
+  font-size: 0.97em;
+  margin-top: 0.18rem;
+  margin-bottom: 0.5rem;
+  display: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  font-weight: 500;
+}
+#productForm .form-group.invalid .error-message {
+  display: block;
+  opacity: 1;
+}
+#productForm .save-btn {
+  background: linear-gradient(90deg, #43d9ad 60%, #379e82 100%);
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  padding: 1rem 1.5rem;
+  font-size: 1.15rem;
+  cursor: pointer;
+  margin-top: 1.2rem;
+  width: 100%;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  transition: background 0.2s, box-shadow 0.2s;
+  box-shadow: 0 2px 8px rgba(67, 217, 173, 0.08);
+}
+#productForm .save-btn:hover {
+  background: linear-gradient(90deg, #379e82 60%, #43d9ad 100%);
+  box-shadow: 0 4px 16px rgba(67, 217, 173, 0.13);
 }
 
 .modal-content h2 {
@@ -815,4 +977,75 @@ tr:hover {
   padding: 8px 10px;
   text-align: left;
   border-bottom: 1px solid #f0f0f0;
+}
+
+.success-message {
+  display: block;
+  position: fixed;
+  top: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #43d9ad;
+  color: #fff;
+  padding: 1rem 2rem;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  box-shadow: 0 4px 16px rgba(35, 41, 70, 0.12);
+  z-index: 2000;
+  letter-spacing: 0.5px;
+  animation: fadeInOut 2.5s forwards;
+}
+@keyframes fadeInOut {
+  0% {
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.success-overlay {
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(35, 41, 70, 0.25);
+  z-index: 1500;
+}
+
+.modern-browse-btn {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  background: linear-gradient(90deg, #43d9ad 60%, #379e82 100%);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 0.6rem 1.2rem;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(67, 217, 173, 0.08);
+  transition: background 0.2s, box-shadow 0.2s, transform 0.1s;
+}
+.modern-browse-btn:hover,
+.modern-browse-btn:focus {
+  background: linear-gradient(90deg, #379e82 60%, #43d9ad 100%);
+  box-shadow: 0 4px 16px rgba(67, 217, 173, 0.13);
+  transform: translateY(-2px) scale(1.04);
+  outline: none;
+}
+.modern-browse-btn i {
+  font-size: 1.15em;
 }
