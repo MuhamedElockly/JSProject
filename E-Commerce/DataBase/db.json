@@ -1,13 +1,22 @@
 {
   "users": [
     {
+      "id": "1",
+      "firstName": "John",
+      "lastName": "Doe",
+      "email": "password123",
+      "password": "password123",
+      "gender": "male",
+      "role": "seller"
+    },
+    {
       "id": "4",
       "firstName": "Emily",
       "lastName": "Williams",
       "email": "emily.w@example.com",
       "password": "password101",
       "gender": "female",
-      "role": "seller"
+      "role": "admin"
     },
     {
       "id": "5",
@@ -358,7 +367,7 @@
       "email": "deborah.n@example.com",
       "password": "password4141",
       "gender": "female",
-      "role": "customer"
+      "role": "user"
     },
     {
       "id": "45",
@@ -571,6 +580,13 @@
       "price": 49.99
     },
     {
+      "id": "33",
+      "name": "Philips Hue Bulb",
+      "category": "Home Appliances",
+      "status": "Approved",
+      "price": 29.99
+    },
+    {
       "id": "34",
       "name": "Crocs Sandals",
       "category": "Shoes",
@@ -583,7 +599,7 @@
       "category": "Electronics",
       "price": 45,
       "sellerId": "5",
-      "status": "Approved",
+      "status": "Pending",
       "imageUrl": "/images/product-images/Egg-removebg-preview.png"
     },
     {
@@ -601,7 +617,7 @@
       "category": "Electronics",
       "price": 435,
       "sellerId": "5",
-      "status": "Approved",
+      "status": "Pending",
       "imageUrl": "/images/product-images/orange.png"
     },
     {
@@ -630,240 +646,48 @@
       "sellerId": "5",
       "status": "Pending",
       "imageUrl": "/images/product-images/orange.png"
-    },
-    {
-      "id": "31cc",
-      "name": "new",
-      "category": "Electronics",
-      "price": 54,
-      "sellerId": "5",
-      "status": "Pending",
-      "imageUrl": "/images/product-images/image (8).png"
-    },
-    {
-      "id": "b21b",
-      "name": "newfef",
-      "category": "Electronics",
-      "price": 45,
-      "sellerId": "5",
-      "status": "Pending",
-      "imageUrl": "/images/product-images/orange.png"
-    },
-    {
-      "id": "601e",
-      "name": "new",
-      "category": "Shoes",
-      "price": 45,
-      "sellerId": "5",
-      "status": "Pending",
-      "imageUrl": "/images/product-images/Screenshot 2025-05-09 031608.png"
     }
   ],
-  "orders": [
+  "checkout": [
     {
-      "id": "1",
-      "userId": "8",
-      "customerName": "Jennifer Miller",
-      "items": [
+      "id": "cc32",
+      "cart": [
         {
-          "productId": "1",
-          "sellerId": "5",
-          "name": "Smartphone X",
-          "price": 699.99,
-          "quantity": 1
-        },
-        {
-          "productId": "3",
-          "sellerId": "5",
-          "name": "Wireless Earbuds",
-          "price": 129.99,
-          "quantity": 2
-        }
-      ],
-      "totalAmount": 959.97,
-      "status": "Approved",
-      "orderDate": "2024-03-15T10:30:00Z"
-    },
-    {
-      "id": "2",
-      "userId": "10",
-      "customerName": "Elizabeth Rodriguez",
-      "items": [
-        {
-          "productId": "2",
-          "sellerId": "5",
-          "name": "Laptop Pro",
-          "price": 1299.99,
-          "quantity": 1
-        }
-      ],
-      "totalAmount": 1299.99,
-      "status": "Approved",
-      "orderDate": "2024-03-14T15:45:00Z"
-    },
-    {
-      "id": "3",
-      "userId": "12",
-      "customerName": "Patricia Hernandez",
-      "items": [
-        {
-          "productId": "4",
-          "sellerId": "5",
-          "name": "Smart Watch",
-          "price": 199.99,
-          "quantity": 1
-        },
-        {
-          "productId": "5",
-          "sellerId": "5",
-          "name": "Bluetooth Speaker",
-          "price": 79.99,
-          "quantity": 3
-        }
-      ],
-      "totalAmount": 439.96,
-      "status": "Approved",
-      "orderDate": "2024-03-16T09:15:00Z"
-    },
-    {
-      "id": "4",
-      "userId": "14",
-      "customerName": "Mary Gonzalez",
-      "items": [
-        {
-          "productId": "9",
-          "sellerId": "5",
-          "name": "Adidas Ultraboost",
-          "price": 179.99,
-          "quantity": 2
-        }
-      ],
-      "totalAmount": 359.98,
-      "status": "Pending",
-      "orderDate": "2024-03-17T11:20:00Z"
-    },
-    {
-      "id": "5",
-      "userId": "16",
-      "customerName": "Linda Anderson",
-      "items": [
-        {
-          "productId": "10",
-          "sellerId": "5",
-          "name": "Apple Watch Series 7",
-          "price": 399.99,
-          "quantity": 1
-        },
-        {
-          "productId": "12",
-          "sellerId": "5",
+          "id": "12",
           "name": "Instant Pot Duo",
-          "price": 99.99,
-          "quantity": 1
+          "category": "Home Appliances",
+          "status": "Approved",
+          "price": 99.99
         }
       ],
-      "totalAmount": 499.98,
-      "status": "Approved",
-      "orderDate": "2024-03-18T14:05:00Z"
+      "user": {
+        "id": "8",
+        "firstName": "Jennifer",
+        "lastName": "Miller",
+        "email": "jennifer.m@example.com",
+        "role": "customer",
+        "gender": "female"
+      }
     },
     {
-      "id": "6",
-      "userId": "18",
-      "customerName": "Barbara Taylor",
-      "items": [
-        {
-          "productId": "13",
-          "sellerId": "5",
-          "name": "Dyson V11 Vacuum",
-          "price": 599.99,
-          "quantity": 1
-        }
-      ],
-      "totalAmount": 599.99,
-      "status": "Pending",
-      "orderDate": "2024-03-19T16:30:00Z"
-    },
+      "id": "3f55",
+      "cart": [],
+      "user": {
+        "id": "8",
+        "firstName": "Jennifer",
+        "lastName": "Miller",
+        "email": "jennifer.m@example.com",
+        "role": "customer",
+        "gender": "female"
+      }
+    }
+  ],
+  "review": [
     {
-      "id": "7",
-      "userId": "20",
-      "customerName": "Susan Jackson",
-      "items": [
-        {
-          "productId": "15",
-          "sellerId": "5",
-          "name": "GoPro HERO10",
-          "price": 499.99,
-          "quantity": 1
-        },
-        {
-          "productId": "16",
-          "sellerId": "5",
-          "name": "Fitbit Charge 5",
-          "price": 149.99,
-          "quantity": 2
-        }
-      ],
-      "totalAmount": 799.97,
-      "status": "Approved",
-      "orderDate": "2024-03-20T18:10:00Z"
-    },
-    {
-      "id": "8",
-      "userId": "22",
-      "customerName": "Karen Lee",
-      "items": [
-        {
-          "productId": "17",
-          "sellerId": "5",
-          "name": "North Face Jacket",
-          "price": 199.99,
-          "quantity": 1
-        }
-      ],
-      "totalAmount": 199.99,
-      "status": "Pending",
-      "orderDate": "2024-03-21T09:50:00Z"
-    },
-    {
-      "id": "9",
-      "userId": "24",
-      "customerName": "Nancy Thompson",
-      "items": [
-        {
-          "productId": "18",
-          "sellerId": "5",
-          "name": "Ray-Ban Sunglasses",
-          "price": 159.99,
-          "quantity": 1
-        },
-        {
-          "productId": "19",
-          "sellerId": "5",
-          "name": "Samsung Galaxy S22",
-          "price": 799.99,
-          "quantity": 1
-        }
-      ],
-      "totalAmount": 959.98,
-      "status": "Approved",
-      "orderDate": "2024-03-22T12:25:00Z"
-    },
-    {
-      "id": "10",
-      "userId": "26",
-      "customerName": "Lisa Harris",
-      "items": [
-        {
-          "productId": "20",
-          "sellerId": "5",
-          "name": "HP Spectre x360",
-          "price": 1299,
-          "quantity": 1
-        }
-      ],
-      "totalAmount": 1299,
-      "status": "Pending",
-      "orderDate": "2024-03-23T15:40:00Z"
+      "id": "4c96",
+      "reviewComment": "a very good watch",
+      "userId": "32",
+      "product": "Apple Watch Series 7"
     }
   ]
 }
