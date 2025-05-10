@@ -58,6 +58,7 @@ function displayUsers(users) {
     deleteBtn.addEventListener("click", async (e) => {
       const modal = document.createElement("div");
       modal.className = "modal modern-popup";
+      modal.style.display = "flex";
       modal.innerHTML = `
           <div class="modal-content">
             <h2>Delete Confirm</h2>
@@ -76,6 +77,18 @@ function displayUsers(users) {
           await deleteUser(userId);
           modal.remove();
           document.getElementById("overlay").style.display = "none";
+          
+          const successDiv = document.getElementById("successMessage");
+          const successOverlay = document.getElementById("successOverlay");
+          if (successDiv && successOverlay) {
+            successDiv.textContent = "User deleted successfully!";
+            successDiv.style.display = "block";
+            successOverlay.style.display = "block";
+            setTimeout(() => {
+              successDiv.style.display = "none";
+              successOverlay.style.display = "none";
+            }, 2500);
+          }
         });
       document
         .getElementById("approve-cancel")
@@ -93,6 +106,7 @@ function displayUsers(users) {
         if (newRole) {
           const modal = document.createElement("div");
           modal.className = "modal modern-popup";
+          modal.style.display = "flex";
           modal.innerHTML = `
           <div class="modal-content">
             <h2>Change Role</h2>
@@ -111,6 +125,18 @@ function displayUsers(users) {
               await changeUserRole(userId, newRole);
               modal.remove();
               document.getElementById("overlay").style.display = "none";
+              // Show success message and overlay
+              const successDiv = document.getElementById("successMessage");
+              const successOverlay = document.getElementById("successOverlay");
+              if (successDiv && successOverlay) {
+                successDiv.textContent = "User role changed successfully!";
+                successDiv.style.display = "block";
+                successOverlay.style.display = "block";
+                setTimeout(() => {
+                  successDiv.style.display = "none";
+                  successOverlay.style.display = "none";
+                }, 2500);
+              }
             });
           document
             .getElementById("approve-cancel")
