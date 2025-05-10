@@ -616,19 +616,22 @@ tr:hover {
   background-color: #e0e0e0;
 }
 
-.modal.modern-popup {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-color: #fff;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  border-radius: 8px;
-  z-index: 1000;
-  width: 400px;
-  max-width: 90%;
-  padding: 20px;
-  font-family: Arial, sans-serif;
+.modal {
+  display: none; 
+  position: fixed; 
+  z-index: 1000; 
+  left: 0;
+  top: 0;
+  width: 100vw; 
+  height: 100vh; 
+  overflow: auto;
+  background: rgba(35, 41, 70, 0.35); 
+  justify-content: center;
+  align-items: center;
+}
+
+.modal[style*="display: flex"] {
+  display: flex !important;
 }
 
 .modal-content {
@@ -728,4 +731,88 @@ tr:hover {
 .role-select option:checked {
   background: #2ecc71; /* Green color */
   color: white;
+}
+
+.order-details-modal-content {
+  max-width: 700px;
+  width: 100%;
+  padding: 2rem;
+  border-radius: 18px;
+  background: #fff;
+  box-shadow: 0 8px 32px rgba(35, 41, 70, 0.22);
+  position: relative;
+  animation: fadeInModal 0.3s;
+}
+.modal-detail-content {
+  background: linear-gradient(135deg, #fff 80%, #e9f7f7 100%);
+  margin: 5% auto;
+  padding: 2.5rem 2rem 2rem 2rem;
+  border-radius: 20px;
+  width: 100%;
+  max-width: 480px;
+  position: relative;
+  box-shadow: 0 8px 32px rgba(35, 41, 70, 0.22);
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  border: 1.5px solid #e0e0e0;
+  transition: box-shadow 0.2s;
+}
+#orderDetailsContent {
+  margin-top: 1.5rem;
+}
+.modal-details {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: auto;
+  background: rgba(35, 41, 70, 0.35);
+  justify-content: center;
+  align-items: center;
+  animation: fadeInModal 0.3s;
+}
+.order-details-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.close {
+  position: absolute;
+  top: 18px;
+  right: 22px;
+  font-size: 1.7rem;
+  color: #888;
+  cursor: pointer;
+  transition: color 0.2s, transform 0.2s;
+}
+.close:hover {
+  color: #ef476f;
+  transform: scale(1.15);
+}
+.order-details-list li {
+  margin-bottom: 1rem;
+  font-size: 1.08rem;
+  color: #232946;
+}
+
+.order-details-products {
+  margin-top: 1rem;
+  border-top: 1px solid #eee;
+  padding-top: 1rem;
+}
+
+.order-details-products table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.order-details-products th,
+.order-details-products td {
+  padding: 8px 10px;
+  text-align: left;
+  border-bottom: 1px solid #f0f0f0;
 }

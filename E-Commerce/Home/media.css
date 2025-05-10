@@ -1,0 +1,21 @@
+@media (min-width: 601px) and (max-width: 1200px) {
+    main>.products-container{
+        grid-template-columns: repeat(3,1fr);
+    }
+
+    
+}
+@media (max-width: 725px) {
+    main>.products-container{
+        grid-template-columns: repeat(2,1fr);
+    }
+
+    
+}
+@media (max-width: 600px) {
+    main>.products-container{
+        grid-template-columns: 1fr;
+    }
+
+    
+}

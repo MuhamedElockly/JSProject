@@ -22,6 +22,9 @@
             <a href="#products"><i class="fas fa-box"></i> My Products</a>
           </li>
           <li>
+            <a href="#orders"><i class="fas fa-shopping-cart"></i> Orders</a>
+          </li>
+          <li>
             <a href="#add-product" id="addProductBtn"
               ><i class="fas fa-plus"></i> Add Product</a
             >
@@ -44,6 +47,11 @@
             <i class="fas fa-clock icon"></i>
             <h3>Pending Products</h3>
             <div class="number" id="Pending-Products">0</div>
+          </div>
+          <div class="stat-card pending-orders">
+            <i class="fas fa-truck icon"></i>
+            <h3>Pending Orders</h3>
+            <div class="number" id="Pending-Orders">0</div>
           </div>
         </section>
         <section class="table-container" id="Products-Table">
@@ -77,6 +85,35 @@
             <tbody></tbody>
           </table>
           <div id="pagination"></div>
+        </section>
+        <section class="table-container" id="Orders-Table" style="display: none;">
+          <div class="table-header">
+            <h2 class="table-title">Orders</h2>
+          </div>
+          <div class="search-container">
+            <div class="search-wrapper">
+               <i class="fas fa-search search-icon"></i>
+              <input
+                type="text"
+                class="search-input orders-search"
+                placeholder="Search orders by customer name or status..."
+              />
+            </div>
+          </div>
+          <table>
+            <thead>
+              <tr>
+                <th>Order ID</th>
+                <th>Customer</th>
+                <th>Products</th>
+                <th>Total</th>
+                <th>Status</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+          <div id="orders-pagination"></div>
         </section>
       </main>
       <div class="modal" id="productModal">
@@ -168,6 +205,13 @@
       </div>
       <div id="successMessage" class="success-message" style="display: none">
         Product saved successfully!
+      </div>
+      <div class="modal" id="orderDetailsModal">
+        <div class="modal-content order-details-modal-content">
+          <span class="close" id="closeOrderDetailsModal">&times;</span>
+          <h2>Order Details</h2>
+          <div id="orderDetailsContent"></div>
+        </div>
       </div>
     </div>
     <script src="js/sellerDashboard.js"></script>

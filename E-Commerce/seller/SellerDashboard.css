@@ -84,6 +84,9 @@ body {
 .stat-card.pending {
   border-left: 6px solid #faae2b;
 }
+.stat-card.pending-orders{
+  border-left: 6px solid red;
+}
 .table-container {
   background: #fff;
   border-radius: 12px;
@@ -152,6 +155,12 @@ body {
   color: #888;
   font-size: 1.1rem;
   pointer-events: none;
+}
+.table-container .orders-search {
+  padding: 0.8rem 1rem 0.8rem 2.5rem !important;
+  font-size: 1rem !important;
+  height: auto !important;
+  line-height: normal !important;
 }
 table {
   width: 100%;
@@ -535,4 +544,106 @@ tr:hover {
 }
 .modern-browse-btn i {
   font-size: 1.15em;
+}
+.approve-btn {
+  background: #43d9ad;
+}
+.approve-btn:hover {
+  background: #379e82;
+}
+
+#Orders-Table {
+  margin-top: 2rem;
+}
+
+#Orders-Table .action-btn {
+  margin-right: 8px;
+}
+
+#Orders-Table td {
+  max-width: 200px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+#Orders-Table td:nth-child(3) {
+  max-width: 300px;
+}
+
+#Orders-Table .orders-search {
+  margin-bottom: 1.5rem;
+}
+
+#orders-pagination {
+  margin-top: 1.5rem;
+}
+
+#Orders-Table .search-wrapper {
+  position: relative;
+}
+
+#Orders-Table .search-wrapper .search-icon {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #888;
+  font-size: 1.1rem;
+  pointer-events: none;
+  height: 1em;
+  line-height: 1;
+}
+
+#Orders-Table .search-wrapper .orders-search {
+  padding: 0.8rem 1rem 0.8rem 2.5rem !important;
+  font-size: 1rem !important;
+  height: 44px !important;
+  box-sizing: border-box;
+  display: block;
+}
+
+.order-details-modal-content {
+  max-width: 600px;
+  width: 100%;
+  padding: 2rem;
+  border-radius: 18px;
+  background: #fff;
+  box-shadow: 0 8px 32px rgba(35, 41, 70, 0.22);
+  position: relative;
+  animation: fadeInModal 0.3s;
+}
+
+#orderDetailsContent {
+  margin-top: 1.5rem;
+}
+
+.order-details-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.order-details-list li {
+  margin-bottom: 1rem;
+  font-size: 1.08rem;
+  color: #232946;
+}
+
+.order-details-products {
+  margin-top: 1rem;
+  border-top: 1px solid #eee;
+  padding-top: 1rem;
+}
+
+.order-details-products table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.order-details-products th,
+.order-details-products td {
+  padding: 8px 10px;
+  text-align: left;
+  border-bottom: 1px solid #f0f0f0;
 }
