@@ -1,7 +1,8 @@
 window.addEventListener("load", function () {
-  document.getElementById("add-user-form")
+  document
+    .getElementById("add-user-form")
     .addEventListener("submit", async function (event) {
-      event.preventDefault(); // Prevent form submission
+      event.preventDefault();
 
       const email = document.getElementById("email").value?.trim();
       const password = document.getElementById("password").value?.trim();
@@ -43,12 +44,10 @@ window.addEventListener("load", function () {
         );
 
         if (user) {
-          // Show success message
           alert(`Login successful! Welcome ${user.firstName} ${user.lastName}`);
           document.getElementById("email").style.borderColor = "green";
           document.getElementById("password").style.borderColor = "green";
 
-          // Store user info in localStorage
           localStorage.setItem(
             "User",
             JSON.stringify({
@@ -57,26 +56,24 @@ window.addEventListener("load", function () {
               lastName: user.lastName,
               email: user.email,
               role: user.role,
-              gender:user.gender
+              gender: user.gender,
             })
           );
 
-          // Redirect based on user role
           switch (user.role) {
             case "admin":
-              window.location.href = "../../Admin-Panel/Admin.html";
+              window.location.href = "./../Admin-Panel/Admin.html";
               break;
             case "seller":
-              window.location.href = "../../seller/SellerDashboard.html";
+              window.location.href = "./../seller/SellerDashboard.html";
               break;
             case "customer":
-              window.location.href = "../../index.html";
+              window.location.href = "./../index.html";
               break;
             default:
               alert("Unknown user role. Please contact support.");
           }
         } else {
-          // Show failure message
           alert("Login failed - Invalid email or password");
           document.getElementById("email").style.borderColor = "red";
           document.getElementById("password").style.borderColor = "red";

@@ -7,7 +7,7 @@
       "email": "password123",
       "password": "password123",
       "gender": "male",
-      "role": "seller"
+      "role": "admin"
     },
     {
       "id": "4",
@@ -41,7 +41,8 @@
       "lastName": "Millers",
       "email": "jennifer.m@example.com",
       "password": "123",
-      "id": "8"
+      "id": "8",
+      "role": "customer"
     },
     {
       "id": "9",
@@ -428,168 +429,192 @@
       "name": "Samsung TV",
       "category": "Electronics",
       "status": "Approved",
-      "price": 899.99
+      "price": 899.99,
+      "imageUrl": "/images/images.jpg"
     },
     {
       "id": "9",
       "name": "Adidas Ultraboost",
       "category": "Shoes",
       "status": "Approved",
-      "price": 179.99
+      "price": 179.99,
+      "imageUrl": "/images/images.jpg"
     },
     {
       "id": "10",
       "name": "Apple Watch Series 7",
       "category": "Electronics",
       "status": "Approved",
-      "price": 399.99
+      "price": 399.99,
+      "imageUrl": "/images/images.jpg"
     },
     {
       "id": "12",
       "name": "Instant Pot Duo",
       "category": "Home Appliances",
       "status": "Approved",
-      "price": 99.99
+      "price": 99.99,
+      "imageUrl": "/images/images.jpg"
     },
     {
       "id": "13",
       "name": "Dyson V11 Vacuum",
       "category": "Home Appliances",
       "status": "Approved",
-      "price": 599.99
+      "price": 599.99,
+      "imageUrl": "/images/images.jpg"
     },
     {
       "id": "15",
       "name": "GoPro HERO10",
       "category": "Electronics",
       "status": "Approved",
-      "price": 499.99
+      "price": 499.99,
+      "imageUrl": "/images/images.jpg"
     },
     {
       "id": "16",
       "name": "Fitbit Charge 5",
       "category": "Electronics",
       "status": "Approved",
-      "price": 149.99
+      "price": 149.99,
+      "imageUrl": "/images/images.jpg"
     },
     {
       "id": "17",
       "name": "North Face Jacket",
       "category": "Clothing",
       "status": "Approved",
-      "price": 199.99
+      "price": 199.99,
+      "imageUrl": "/images/images.jpg"
     },
     {
       "id": "18",
       "name": "Ray-Ban Sunglasses",
       "category": "Accessories",
       "status": "Approved",
-      "price": 159.99
+      "price": 159.99,
+      "imageUrl": "/images/images.jpg"
     },
     {
       "id": "19",
       "name": "Samsung Galaxy S22",
       "category": "Electronics",
       "status": "Pending",
-      "price": 799.99
+      "price": 799.99,
+      "imageUrl": "/images/mobile2.png"
     },
     {
       "id": "20",
       "name": "HP Spectre x360",
       "category": "Electronics",
       "status": "Approved",
-      "price": 1299
+      "price": 1299,
+      "imageUrl": "/images/labtob.jpg"
     },
     {
       "id": "21",
       "name": "Bose SoundLink",
       "category": "Electronics",
       "status": "Approved",
-      "price": 229.99
+      "price": 229.99,
+      "imageUrl": "/images/images.jpg"
     },
     {
       "id": "22",
       "name": "Crocs Classic",
       "category": "Shoes",
       "status": "Pending",
-      "price": 49.99
+      "price": 49.99,
+      "imageUrl": "/images/images.jpg"
     },
     {
       "id": "23",
       "name": "Patagonia Backpack",
       "category": "Accessories",
       "status": "Approved",
-      "price": 89.99
+      "price": 89.99,
+      "imageUrl": "/images/images.jpg"
     },
     {
       "id": "24",
       "name": "Apple iPad Air",
       "category": "Electronics",
       "status": "Approved",
-      "price": 599.99
+      "price": 599.99,
+      "imageUrl": "/images/labtob2.jpg"
     },
     {
       "id": "25",
       "name": "Sony PlayStation 5",
       "category": "Electronics",
       "status": "Pending",
-      "price": 499.99
+      "price": 499.99,
+      "imageUrl": "/images/images.jpg"
     },
     {
       "id": "26",
       "name": "Xbox Series X",
       "category": "Electronics",
       "status": "Approved",
-      "price": 499.99
+      "price": 499.99,
+      "imageUrl": "/images/images.jpg"
     },
     {
       "id": "27",
       "name": "Nintendo Switch",
       "category": "Electronics",
       "status": "Approved",
-      "price": 299.99
+      "price": 299.99,
+      "imageUrl": "/images/images.jpg"
     },
     {
       "id": "29",
       "name": "Columbia Hiking Boots",
       "category": "Shoes",
       "status": "Approved",
-      "price": 139.99
+      "price": 139.99,
+      "imageUrl": "/images/images.jpg"
     },
     {
       "id": "30",
       "name": "Fossil Smartwatch",
       "category": "Accessories",
       "status": "Approved",
-      "price": 179.99
+      "price": 179.99,
+      "imageUrl": "/images/images.jpg"
     },
     {
       "id": "31",
       "name": "Logitech MX Master 3",
       "category": "Electronics",
       "status": "Approved",
-      "price": 99.99
+      "price": 99.99,
+      "imageUrl": "/images/images.jpg"
     },
     {
       "id": "32",
       "name": "Amazon Echo Dot",
       "category": "Electronics",
       "status": "Approved",
-      "price": 49.99
+      "price": 49.99,
+      "imageUrl": "/images/images.jpg"
     },
     {
       "id": "33",
       "name": "Philips Hue Bulb",
       "category": "Home Appliances",
       "status": "Approved",
-      "price": 29.99
+      "price": 29.99,
+      "imageUrl": "/images/images.jpg"
     },
     {
       "id": "34",
       "name": "Crocs Sandals",
       "category": "Shoes",
       "status": "Approved",
-      "price": 39.99
+      "price": 39.99,
+      "imageUrl": "/images/images.jpg"
     },
     {
       "id": "3e14",
@@ -598,7 +623,7 @@
       "price": 45,
       "sellerId": "5",
       "status": "Pending",
-      "imageUrl": "/images/product-images/Egg-removebg-preview.png"
+      "imageUrl": "/images/labtob.jpg"
     },
     {
       "id": "54dd",
@@ -607,7 +632,7 @@
       "price": 435,
       "sellerId": "5",
       "status": "Pending",
-      "imageUrl": "/images/product-images/190.png"
+      "imageUrl": "/images/images.jpg"
     },
     {
       "id": "f16c",
@@ -615,8 +640,8 @@
       "category": "Electronics",
       "price": 435,
       "sellerId": "5",
-      "status": "Pending",
-      "imageUrl": "/images/product-images/orange.png"
+      "status": "Approved",
+      "imageUrl": "/images/labtob2.jpg"
     },
     {
       "id": "999b",
@@ -625,7 +650,7 @@
       "price": 67,
       "sellerId": "5",
       "status": "Pending",
-      "imageUrl": "/images/product-images/orange.png"
+      "imageUrl": "/images/labtob2.jpg"
     },
     {
       "id": "7d29",
@@ -634,7 +659,7 @@
       "price": 34,
       "sellerId": "5",
       "status": "Pending",
-      "imageUrl": "/images/product-images/qbit.jpg"
+      "imageUrl": "/images/images.jpg"
     },
     {
       "id": "f109",
@@ -643,218 +668,232 @@
       "price": 324,
       "sellerId": "5",
       "status": "Pending",
-      "imageUrl": "/images/product-images/orange.png"
+      "imageUrl": "/images/labtob.jpg"
+    },
+    {
+      "id": "4638",
+      "name": "new labtob",
+      "category": "Electronics",
+      "price": 12000,
+      "sellerId": "5",
+      "status": "Approved",
+      "imageUrl": "/images/labtob6.png"
+    },
+    {
+      "id": "6b6a",
+      "name": "new labtob 2",
+      "category": "Electronics",
+      "price": 111,
+      "sellerId": "5",
+      "status": "Approved",
+      "imageUrl": "/images/labtob6.png"
+    },
+    {
+      "id": "4ffb",
+      "name": "new labtob 3",
+      "category": "Electronics",
+      "price": 1111,
+      "sellerId": "5",
+      "status": "Approved",
+      "imageUrl": "/images/labtob6.png"
+    },
+    {
+      "id": "ac51",
+      "name": "new mobil",
+      "category": "Electronics",
+      "price": 555,
+      "sellerId": "5",
+      "status": "Approved",
+      "imageUrl": "/images/labtob6.png"
+    },
+    {
+      "id": "05ce",
+      "name": "new product",
+      "category": "Electronics",
+      "price": 555,
+      "sellerId": "5",
+      "status": "Pending",
+      "imageUrl": "/images/labtob2.jpg"
+    },
+    {
+      "id": "75fa",
+      "name": "new",
+      "category": "Electronics",
+      "price": 45,
+      "sellerId": "5",
+      "status": "Pending",
+      "imageUrl": "/images/1747426435984.png"
+    },
+    {
+      "id": "0367",
+      "name": "new labtob",
+      "category": "Electronics",
+      "price": 54,
+      "sellerId": "5",
+      "status": "Approved",
+      "imageUrl": "/images/labtob6.png"
+    },
+    {
+      "id": "67a7",
+      "name": "Computer",
+      "category": "Electronics",
+      "price": 43,
+      "sellerId": "5",
+      "status": "Approved",
+      "imageUrl": "/images/labtob4.jpg"
+    },
+    {
+      "id": "c68a",
+      "name": "new labtob",
+      "category": "Electronics",
+      "price": 34,
+      "sellerId": "5",
+      "status": "Approved",
+      "imageUrl": "/images/labtob.jpg"
     }
   ],
   "orders": [
     {
-      "id": "cc32",
+      "id": "6117",
+      "userId": "1",
+      "userName": "John Doe",
+      "userEmail": "password123",
+      "date": "2025-05-16T22:08:04.951Z",
+      "status": "Approved",
       "cart": [
         {
-          "id": "12",
-          "name": "Instant Pot Duo",
-          "category": "Home Appliances",
-          "status": "Approved",
-          "price": 99.99
-        }
-      ],
-      "user": {
-        "id": "8",
-        "firstName": "Jennifer",
-        "lastName": "Miller",
-        "email": "jennifer.m@example.com",
-        "role": "customer",
-        "gender": "female"
-      }
-    },
-    {
-      "id": "3f55",
-      "cart": [],
-      "user": {
-        "id": "8",
-        "firstName": "Jennifer",
-        "lastName": "Miller",
-        "email": "jennifer.m@example.com",
-        "role": "customer",
-        "gender": "female"
-      }
-    },
-    {
-      "id": "45d3",
-      "cart": [
-        {
-          "id": "12",
-          "name": "Instant Pot Duo",
-          "category": "Home Appliances",
-          "status": "Approved",
-          "price": 99.99
-        },
-        {
-          "id": "10",
+          "productId": "10",
           "name": "Apple Watch Series 7",
-          "category": "Electronics",
-          "status": "Approved",
-          "price": 399.99
-        }
-      ],
-      "user": {
-        "id": "32",
-        "firstName": "Donna",
-        "lastName": "Walker",
-        "email": "donna.w@example.com",
-        "role": "customer",
-        "gender": "female"
-      },
-      "status": "pending"
-    },
-    {
-      "id": "ab90",
-      "cart": [
-        {
-          "name": "Instant Pot Duo",
-          "price": "99.99",
-          "quantity": "1"
+          "price": 399.99,
+          "quantity": 1,
+          "imageUrl": "/images/images.jpg",
+          "category": "Electronics"
         },
         {
-          "name": "Adidas Ultraboost",
-          "price": "179.99",
-          "quantity": "1"
-        }
-      ],
-      "user": {
-        "id": "32",
-        "firstName": "Donna",
-        "lastName": "Walker",
-        "email": "donna.w@example.com",
-        "role": "customer",
-        "gender": "female"
-      },
-      "status": "Pending"
-    },
-    {
-      "id": "46c8",
-      "cart": [
-        {
+          "productId": "12",
           "name": "Instant Pot Duo",
-          "price": "99.99",
-          "quantity": "1"
+          "price": 99.99,
+          "quantity": 1,
+          "imageUrl": "/images/images.jpg",
+          "category": "Home Appliances"
         },
         {
+          "productId": "5",
+          "name": "Samsung TV",
+          "price": 899.99,
+          "quantity": 1,
+          "imageUrl": "/images/images.jpg",
+          "category": "Electronics"
+        },
+        {
+          "productId": "15",
+          "name": "GoPro HERO10",
+          "price": 499.99,
+          "quantity": 1,
+          "imageUrl": "/images/images.jpg",
+          "category": "Electronics"
+        },
+        {
+          "productId": "24",
+          "name": "Apple iPad Air",
+          "price": 599.99,
+          "quantity": 1,
+          "imageUrl": "/images/labtob2.jpg",
+          "category": "Electronics"
+        }
+      ],
+      "totalAmount": 2499.95
+    },
+    {
+      "id": "0149",
+      "userId": "32",
+      "userName": "Donna Walker",
+      "userEmail": "donna.w@example.com",
+      "date": "2025-05-16T22:53:50.852Z",
+      "status": "Pending",
+      "cart": [
+        {
+          "productId": "12",
+          "name": "Instant Pot Duo",
+          "price": 99.99,
+          "quantity": 1,
+          "imageUrl": "/images/images.jpg",
+          "category": "Home Appliances"
+        },
+        {
+          "productId": "10",
           "name": "Apple Watch Series 7",
-          "price": "399.99",
-          "quantity": "1"
-        },
-        {
-          "name": "Adidas Ultraboost",
-          "price": "179.99",
-          "quantity": "1"
+          "price": 399.99,
+          "quantity": 1,
+          "imageUrl": "/images/images.jpg",
+          "category": "Electronics"
         }
       ],
-      "user": {
-        "id": "32",
-        "firstName": "Donna",
-        "lastName": "Walker",
-        "email": "donna.w@example.com",
-        "role": "customer",
-        "gender": "female"
-      },
-      "status": "Pending"
+      "totalAmount": 499.98
     },
     {
-      "id": "b386",
+      "id": "252d",
+      "userId": "32",
+      "userName": "Donna Walker",
+      "userEmail": "donna.w@example.com",
+      "date": "2025-05-16T22:54:44.467Z",
+      "status": "Approved",
       "cart": [
         {
-          "name": "Instant Pot Duo",
-          "price": "99.99",
-          "quantity": "1"
+          "productId": "26",
+          "name": "Xbox Series X",
+          "price": 499.99,
+          "quantity": 1,
+          "imageUrl": "/images/images.jpg",
+          "category": "Electronics"
         },
         {
-          "name": "Apple Watch Series 7",
-          "price": "399.99",
-          "quantity": "1"
+          "productId": "27",
+          "name": "Nintendo Switch",
+          "price": 299.99,
+          "quantity": 1,
+          "imageUrl": "/images/images.jpg",
+          "category": "Electronics"
         },
         {
-          "name": "Adidas Ultraboost",
-          "price": "179.99",
-          "quantity": "1"
+          "productId": "30",
+          "name": "Fossil Smartwatch",
+          "price": 179.99,
+          "quantity": 1,
+          "imageUrl": "/images/images.jpg",
+          "category": "Accessories"
         }
       ],
-      "user": {
-        "id": "32",
-        "firstName": "Donna",
-        "lastName": "Walker",
-        "email": "donna.w@example.com",
-        "role": "customer",
-        "gender": "female"
-      },
-      "status": "Pending"
+      "totalAmount": 979.97
     },
     {
-      "id": "6cf7",
+      "id": "2c4b",
+      "userId": "32",
+      "userName": "Donna Walker",
+      "userEmail": "donna.w@example.com",
+      "date": "2025-05-16T22:57:30.951Z",
+      "status": "Approved",
       "cart": [
         {
-          "name": "Instant Pot Duo",
-          "price": "99.99",
-          "quantity": 2
-        }
-      ],
-      "user": {
-        "id": "32",
-        "firstName": "Donna",
-        "lastName": "Walker",
-        "email": "donna.w@example.com",
-        "role": "customer",
-        "gender": "female"
-      },
-      "status": "Pending"
-    },
-    {
-      "id": "be13",
-      "cart": [
-        {
-          "name": "Apple Watch Series 7",
-          "price": "399.99",
-          "quantity": "1"
+          "productId": "4638",
+          "name": "new labtob",
+          "price": 12000,
+          "quantity": 1,
+          "sellerId": "5",
+          "imageUrl": "/images/labtob6.png",
+          "category": "Electronics"
         },
         {
-          "name": "Instant Pot Duo",
-          "price": "99.99",
-          "quantity": 2
+          "productId": "67a7",
+          "name": "Computer",
+          "price": 43,
+          "quantity": 1,
+          "sellerId": "5",
+          "imageUrl": "/images/labtob4.jpg",
+          "category": "Electronics"
         }
       ],
-      "user": {
-        "id": "32",
-        "firstName": "Donna",
-        "lastName": "Walker",
-        "email": "donna.w@example.com",
-        "role": "customer",
-        "gender": "female"
-      },
-      "status": "Pending"
-    },
-    {
-      "id": "3232",
-      "cart": [
-        {
-          "name": "Apple Watch Series 7",
-          "price": "399.99",
-          "quantity": "1"
-        },
-        {
-          "name": "Instant Pot Duo",
-          "price": "99.99",
-          "quantity": "1"
-        }
-      ],
-      "user": {
-        "id": "32",
-        "firstName": "Donna",
-        "lastName": "Walker",
-        "email": "donna.w@example.com",
-        "role": "customer",
-        "gender": "female"
-      },
-      "status": "Pending"
+      "totalAmount": 12043
     }
   ],
   "review": [
@@ -875,6 +914,12 @@
       "reviewComment": null,
       "userId": "32",
       "product": "Samsung TV"
+    },
+    {
+      "id": "f43b",
+      "reviewComment": null,
+      "userId": "32",
+      "product": "GoPro HERO10"
     }
   ]
 }

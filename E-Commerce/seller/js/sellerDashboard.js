@@ -27,7 +27,7 @@ async function fetchSellerOrders() {
   return allOrders.filter(
     (order) =>
       order.status === "Pending" &&
-      order.items.some((item) => String(item.sellerId) === String(SELLER_ID))
+      order.cart.some((item) => String(item.sellerId) === String(SELLER_ID))
   );
 }
 
@@ -83,30 +83,27 @@ function displayOrders(orders) {
   }
 
   orders.forEach((order) => {
-    const sellerItems = order.items.filter(
+    const sellerItems = order.cart.filter(
       (item) => String(item.sellerId) === String(SELLER_ID)
     );
+    
     const total = sellerItems.reduce(
-      (sum, item) => sum + item.price * item.quantity,
+      (sum, item) => sum + (Number(item.price) * Number(item.quantity)),
       0
     );
 
     const row = document.createElement("tr");
     row.innerHTML = `
       <td>${order.id}</td>
-      <td>${order.customerName}</td>
+      <td>${order.userName}</td>
       <td>${sellerItems
         .map((item) => `${item.name} (${item.quantity})`)
         .join(", ")}</td>
       <td>$${total.toFixed(2)}</td>
-      <td>Pending</td>
+      <td>${order.status}</td>
       <td>
-        <button class="action-btn approve-btn" data-id="${
-          order.id
-        }">Approve</button>
-        <button class="action-btn delete-btn" data-id="${
-          order.id
-        }">Delete</button>
+        <button class="action-btn approve-btn" data-id="${order.id}">Approve</button>
+        <button class="action-btn delete-btn" data-id="${order.id}">Delete</button>
       </td>
     `;
     tbody.appendChild(row);
@@ -235,16 +232,33 @@ function updateOrdersTable() {
 
 function handleOrdersSearchInput(e) {
   clearTimeout(ordersSearchTimeout);
-  const val = e.target.value.toLowerCase();
+  const val = e.target.value.toLowerCase().trim();
+  
   ordersSearchTimeout = setTimeout(() => {
-    filteredOrders = sellerOrders.filter(
-      (order) =>
-        order.customerName.toLowerCase().includes(val) ||
-        order.status.toLowerCase().includes(val)
-    );
+    if (!val) {
+      filteredOrders = sellerOrders;
+    } else {
+      filteredOrders = sellerOrders.filter((order) => {
+        const sellerItems = order.cart.filter(
+          (item) => String(item.sellerId) === String(SELLER_ID)
+        );
+        
+        const customerMatch = order.userName?.toLowerCase().includes(val);
+        
+        const productMatch = sellerItems.some(item => 
+          item.name?.toLowerCase().includes(val)
+        );
+        
+        const orderIdMatch = order.id?.toString().includes(val);
+        
+        return customerMatch || productMatch || orderIdMatch;
+      });
+    }
+    
     currentOrdersPage = 1;
+    
     updateOrdersTable();
-  }, 250);
+  }, 300);
 }
 
 async function approveOrder(orderId) {
@@ -290,24 +304,23 @@ async function deleteOrder(orderId) {
 function openOrderDetailsModal(order) {
   const modal = document.getElementById("orderDetailsModal");
   const content = document.getElementById("orderDetailsContent");
-
-  const sellerItems = order.items.filter(
+  
+  const sellerItems = order.cart.filter(
     (item) => String(item.sellerId) === String(SELLER_ID)
   );
+  
   const total = sellerItems.reduce(
-    (sum, item) => sum + item.price * item.quantity,
+    (sum, item) => sum + (Number(item.price) * Number(item.quantity)),
     0
   );
-
+  
   content.innerHTML = `
     <ul class="order-details-list">
       <li><strong>Order ID:</strong> ${order.id}</li>
-      <li><strong>Customer:</strong> ${order.customerName}</li>
-      <li><strong>Status:</strong> ${
-        order.status === "bending" ? "Pending" : order.status
-      }</li>
+      <li><strong>Customer:</strong> ${order.userName}</li>
+      <li><strong>Status:</strong> ${order.status}</li>
       <li><strong>Order Date:</strong> ${
-        order.orderDate ? new Date(order.orderDate).toLocaleString() : ""
+        order.date ? new Date(order.date).toLocaleString() : ""
       }</li>
       <li><strong>Total:</strong> $${total.toFixed(2)}</li>
     </ul>
@@ -329,8 +342,8 @@ function openOrderDetailsModal(order) {
             <tr>
               <td>${item.name}</td>
               <td>${item.quantity}</td>
-              <td>$${item.price.toFixed(2)}</td>
-              <td>$${(item.price * item.quantity).toFixed(2)}</td>
+              <td>$${Number(item.price).toFixed(2)}</td>
+              <td>$${(Number(item.price) * Number(item.quantity)).toFixed(2)}</td>
             </tr>
           `
             )

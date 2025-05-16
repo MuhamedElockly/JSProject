@@ -4,9 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>E-Commerce Home</title>
-  <link rel="stylesheet" href="/Home/style.css">
+  <link rel="stylesheet" href="./Home/style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <link rel="stylesheet" href="/Home/profile-styles.css">
+  <link rel="stylesheet" href="./Home/profile-styles.css">
 </head>
 <body>
   <header class="header">
@@ -16,7 +16,12 @@
       <button class="search-button"><i class="fas fa-search"></i></button>
     </div>
     <div class="icons">
-      <a href="#" class="icon"><i class="fas fa-shopping-cart"></i></a>
+      <div class="cart-container">
+        <a href="#" class="icon"><i class="fas fa-shopping-cart"></i></a>
+        <div class="order-status" style="cursor: pointer;">
+          <i class="fas fa-clipboard-list"></i>
+        </div>
+      </div>
       <a href="#" class="icon" id="profile"><i class="fas fa-user" ></i></a>
       <a href="#" class="icon" id="sign-out"><i class="fas fa-sign-in-alt" ></i></a>
     </div>
@@ -59,6 +64,18 @@
   </div>
   <main>
   </main>
+  <div id="successMessage" class="success-message" style="display: none">
+    Product saved successfully!
+  </div>
+  <div class="modal" id="ordersModal">
+    <div class="modal-content">
+      <span class="close" id="closeOrdersModal">&times;</span>
+      <h2>My Orders</h2>
+      <div class="orders-list">
+        <!-- Orders will be displayed here -->
+      </div>
+    </div>
+  </div>
   <script src="Home/script.js"></script>
 </body>
 </html> 

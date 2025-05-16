@@ -137,15 +137,15 @@ function displayAdminOrders(orders) {
   const tbody = document.querySelector("#Orders-Table tbody");
   tbody.innerHTML = "";
   orders.forEach((order) => {
-    const total = order.items.reduce(
+    const total = order.cart.reduce(
       (sum, item) => sum + item.price * item.quantity,
       0
     );
     const row = document.createElement("tr");
     row.innerHTML = `
       <td>${order.id}</td>
-      <td>${order.customerName}</td>
-      <td>${order.items
+      <td>${order.userName}</td>
+      <td>${order.cart
         .map((item) => `${item.name} (${item.quantity})`)
         .join(", ")}</td>
       <td>$${total.toFixed(2)}</td>
@@ -217,16 +217,43 @@ function updateAdminOrdersTable() {
 
 function handleAdminOrdersSearchInput(e) {
   clearTimeout(ordersSearchTimeout);
-  const val = e.target.value.toLowerCase();
+  const val = e.target.value.toLowerCase().trim();
+  
   ordersSearchTimeout = setTimeout(() => {
-    filteredAdminOrders = adminOrders.filter(
-      (order) =>
-        order.customerName.toLowerCase().includes(val) ||
-        order.status.toLowerCase().includes(val)
-    );
+    if (!val) {
+      // If search is empty, show all orders
+      filteredAdminOrders = adminOrders;
+    } else {
+      // Filter orders based on search criteria
+      filteredAdminOrders = adminOrders.filter((order) => {
+        // Search in userName
+        const userNameMatch = order.userName?.toLowerCase().includes(val);
+        
+        // Search in status
+        const statusMatch = order.status?.toLowerCase().includes(val);
+        
+        // Search in product names
+        const productMatch = order.cart?.some(item => 
+          item.name?.toLowerCase().includes(val)
+        );
+        
+        // Search in order ID
+        const orderIdMatch = order.id?.toString().includes(val);
+        
+        return userNameMatch || statusMatch || productMatch || orderIdMatch;
+      });
+    }
+    
+    // Reset to first page when searching
     currentOrdersPage = 1;
+    
+    // Update the table with filtered results
     updateAdminOrdersTable();
-  }, 250);
+    
+    // Update pagination
+    const totalPages = Math.ceil(filteredAdminOrders.length / ordersPerPage);
+    displayOrdersPagination(totalPages);
+  }, 300); // Increased debounce time for better performance
 }
 
 async function approveAdminOrder(orderId) {
@@ -270,7 +297,7 @@ function openOrderDetailsModal(order) {
   content.innerHTML = `
     <ul class="order-details-list">
       <li><strong>Order ID:</strong> ${order.id}</li>
-      <li><strong>Customer:</strong> ${order.customerName}</li>
+      <li><strong>Customer:</strong> ${order.userName}</li>
       <li><strong>Status:</strong> ${order.status}</li>
       <li><strong>Order Date:</strong> ${
         order.orderDate ? new Date(order.orderDate).toLocaleString() : ""
@@ -291,7 +318,7 @@ function openOrderDetailsModal(order) {
           </tr>
         </thead>
         <tbody>
-          ${order.items
+          ${order.cart
             .map(
               (item) => `
             <tr>
@@ -320,9 +347,13 @@ window.addEventListener("DOMContentLoaded", async () => {
   adminOrders = await fetchAllOrders();
   filteredAdminOrders = adminOrders;
   updateAdminOrdersTable();
-  document
-    .querySelector(".orders-search")
-    .addEventListener("input", handleAdminOrdersSearchInput);
+  
+  // Add search input event listener
+  const searchInput = document.querySelector(".orders-search");
+  if (searchInput) {
+    searchInput.addEventListener("input", handleAdminOrdersSearchInput);
+  }
+  
   document
     .getElementById("closeOrderDetailsModal")
     .addEventListener("click", closeOrderDetailsModal);

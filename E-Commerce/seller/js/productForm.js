@@ -26,11 +26,18 @@ document.addEventListener("DOMContentLoaded", () => {
     validateField(priceInput, "Price must be greater than 0")
   );
 
-  // Image URL preview functionality
   photoInput.addEventListener("input", function () {
     const url = this.value.trim();
     if (url) {
-      photoPreview.src = url;
+      let updatedUrl = url;
+      if (!url.startsWith("/images/")) {
+        updatedUrl = `/images/${url.replace(/^\/+/, "")}`;
+      }
+
+      if (updatedUrl !== url) {
+        photoInput.value = updatedUrl;
+      }
+      photoPreview.src = updatedUrl;
       photoPreview.style.display = "block";
     } else {
       photoPreview.src = "";
@@ -45,10 +52,20 @@ document.addEventListener("DOMContentLoaded", () => {
   browseInput.addEventListener("change", function () {
     const file = this.files[0];
     if (file) {
-      const url = `/images/product-images/${file.name}`;
-      photoInput.value = url;
-
-      // photoInput.dispatchEvent(new Event('input'));
+      // Use the original filename
+      const fileName = file.name;
+      
+      // Set the image URL to point directly to the images folder
+      const imageUrl = `/images/${fileName}`;
+      photoInput.value = imageUrl;
+      
+      // Show preview
+      const reader = new FileReader();
+      reader.onload = function (e) {
+        photoPreview.src = e.target.result;
+        photoPreview.style.display = "block";
+      };
+      reader.readAsDataURL(file);
     }
   });
 
@@ -101,7 +118,7 @@ document.addEventListener("DOMContentLoaded", () => {
     let isPhotoValid = true;
     if (!photoUrl) {
       photoInput.closest(".form-group").classList.add("invalid");
-      photoError.textContent = "Please enter the image URL.";
+      photoError.textContent = "Please select an image.";
       isPhotoValid = false;
     } else {
       photoInput.closest(".form-group").classList.remove("invalid");
@@ -112,16 +129,23 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
+    let finalImageUrl = photoUrl;
+    if (photoUrl.startsWith("/images/")) {
+      finalImageUrl = photoUrl;
+    } else {
+      const fileName = photoUrl.split("/").pop();
+      finalImageUrl = `/images/${fileName}`;
+    }
+
     const product = {
       name: nameInput.value.trim(),
       category: categoryInput.value.trim(),
       price: parseFloat(priceInput.value),
       sellerId: CURRENT_SELLER_ID,
       status: "Pending",
-      imageUrl: photoUrl,
+      imageUrl: finalImageUrl,
     };
 
-    // Check if editing (data-edit-id is set)
     const editId = form.getAttribute("data-edit-id");
     let url = PRODUCT_API_URL + "/products";
     let method = "POST";
